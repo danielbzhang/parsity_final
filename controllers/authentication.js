@@ -3,7 +3,7 @@ const User = require('../models/User');
 const keys = require('../config/dev');
 
 const tokenForUser = (user) => {
-  console.log('authentication user:', user);
+  // console.log('authentication user:', user);
   return jwt.encode(
     {
       sub: user.id,

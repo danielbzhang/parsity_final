@@ -7,7 +7,7 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 import thunk from 'redux-thunk';
 import store from './store';
 import rootReducer from './reducers';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 // components
 import App from './App';
 import Login from './components/Login';
