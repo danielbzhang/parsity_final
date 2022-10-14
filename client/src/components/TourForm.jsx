@@ -43,7 +43,6 @@ const TourForm = () => {
   const onSubmit = (data) => {
     console.log('TourForm data: ', data);
     dispatch(addTournament(data));
-
   };
 
   return (
@@ -88,7 +87,11 @@ const TourForm = () => {
             {...register('title', { required: true })}
           />
         </FloatingLabel>
-        <FloatingLabel controlId='floatingDate' label='Date:' className='mb-2'>
+        <FloatingLabel
+          controlId='floatingDate'
+          label='Date: (month/day/year)'
+          className='mb-2'
+        >
           <Form.Control
             type='text'
             name='hostDate'

@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Navigate } from 'react-router-dom';
 
 const App = () => {
