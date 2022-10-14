@@ -27,7 +27,7 @@ const Login = () => {
     console.log('onSubmit data: ', data);
     dispatch(
       handleLogin(data, () => {
-        navigate('/api/touramentlist');
+        navigate('/api/main');
       })
     );
   };

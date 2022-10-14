@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './type';
+import {
+  AUTH_USER,
+  AUTH_ERROR,
+  ADD_TOURNAMENT,
+  GET_TOURNAMENTS,
+  UPDATE_TOURNAMENT,
+  DELETE_TOURNAMENT,
+} from './type';
 
 const ROOT_URL = 'http://localhost:8000';
 
@@ -34,4 +41,47 @@ export const handleLogout = (callback) => (dispatch) => {
 
   dispatch({ type: AUTH_USER, payload: '' });
   callback();
+};
+
+export const addTournament = (tourData) => (dispatch) => {
+  axios
+    .post(`${ROOT_URL}/api/tours`, tourData)
+    .then(function (response) {
+      dispatch({ type: ADD_TOURNAMENT, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in addTournament', error);
+    });
+};
+
+export const getTournaments = () => (dispatch) => {
+  axios
+    .get(`${ROOT_URL}/api/tours`)
+    .then(function (response) {
+      dispatch({ type: GET_TOURNAMENTS, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in getTournaments', error);
+    });
+};
+
+export const updateTournament = (tourID, tourData) => (dispatch) => {
+  axios
+    .put(`${ROOT_URL}/tours/${tourID}`, tourData)
+    .then(function (response) {
+      dispatch({ type: UPDATE_TOURNAMENT, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in updateTournament', error);
+    });
+};
+export const deleteTournament = (tourID) => (dispatch) => {
+  axios
+    .delete(`${ROOT_URL}/tours/${tourID}`)
+    .then(function (response) {
+      dispatch({ type: DELETE_TOURNAMENT, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in deleteTournament', error);
+    });
 };

@@ -4,12 +4,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./database/db');
 const authRouter = require('./routes/auth');
+const tourRouter = require('./routes/main');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+
+app.use('/', tourRouter);
 
 authRouter(app);
 

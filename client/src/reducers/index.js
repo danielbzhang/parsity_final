@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-
-const test = () => {
-  return 'hello';
-};
+import tourReducer from './tourReducer';
 
 const rootReducer = combineReducers({
-  auth: authReducer, // test: test,
+  auth: authReducer,
+  tour: tourReducer,
 });
 
 export default rootReducer;

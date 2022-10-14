@@ -12,7 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import Login from './components/Login';
 import Register from './components/Register';
-import TouramentList from './components/TouramentList';
+import TournamentMain from './components/TournamentMain';
+// import Tournament from '../../models/Tournament';
 
 // const store = createStore(
 //   rootReducer,
@@ -28,7 +29,7 @@ root.render(
         <Route path='/' element={<App />} />
         <Route exact path='/auth/login' element={<Login />} />
         <Route exact path='/auth/register' element={<Register />} />
-        <Route exact path='/api/touramentlist' element={<TouramentList />} />
+        <Route exact path='/api/main' element={<TournamentMain />} />
       </Routes>
     </BrowserRouter>
   </Provider>

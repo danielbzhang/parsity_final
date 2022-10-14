@@ -1,12 +1,8 @@
-import Nav from './Nav';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TouramentList = () => {
-  return (
-    <>
-      <Nav />
-      <h1>Tourament List Page</h1>
-    </>
-  );
+  return <></>;
 };
 
 export default TouramentList;
