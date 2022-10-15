@@ -7,6 +7,7 @@ const PlayerSchema = new Schema({
   sex: { type: String },
   phone: { type: String },
   email: { type: String },
+  // createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Player', PlayerSchema);

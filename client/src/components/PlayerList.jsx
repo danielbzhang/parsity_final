@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
 import { addPlayer } from '../actions';
+import { getPlayers } from '../actions';
 
 const PlayerList = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const tourId = useSelector((state) => state.rootReducer.tourOne._id);
@@ -84,7 +86,17 @@ const PlayerList = () => {
           Add Player
         </button>
       </form>
-      <Link to='/tours/:id/allplayers'>All Players List</Link>
+      <Link to='/tours/:id/allplayers' onClick={() => getPlayers(tourId)}>
+        All Players List
+      </Link>
+      {/* <button
+        className='btn btn-outline-secondary'
+        onClick={() =>
+          getPlayers(tourId, () => navigate('/tours/:id/allplayers'))
+        }
+      >
+        All Players List
+      </button> */}
     </>
   );
 };

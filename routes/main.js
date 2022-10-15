@@ -31,7 +31,7 @@ router.get('/api/tours', async (req, res) => {
 router.get('/tours/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const tour = await Tournament.findById(id);
+    const tour = await Tournament.findById(id).populate('players');
     return res.status(200).json(tour);
   } catch (err) {
     return res.status(500).json(err.message);
@@ -67,15 +67,24 @@ router.delete('/tours/:id', async (req, res) => {
 
 router.post('/tours/:id/player', async (req, res, next) => {
   const id = req.params.id;
-  console.log('TOURS ID: ', id);
+  // console.log('TOURS ID: ', id);
   // const id = '6349a9d83e649a2368a38fcc';
   const { firstname, lastname, sex, phone, email } = req.body;
+  // if (sex === 'm') {
+  //   sex = 'Male';
+  // } else {
+  //   sex = 'Female';
+  // }
+
+  // sex = sex === 'm' ? 'Male' : 'Female';
+
   const newPlayer = await Player.create({
     firstname,
     lastname,
     sex,
     phone,
     email,
+    // createdAt: Date.now(),
   });
   // await newPlayer.save();
   Tournament.findOneAndUpdate(
@@ -98,10 +107,9 @@ router.post('/tours/:id/player', async (req, res, next) => {
 router.get('/tours/:id/player', async (req, res) => {
   try {
     const id = req.params.id;
-    const tour = await Tournament.findById(id);
-    const players = tour.players;
-    // console.log(players);
-    return res.status(200).json(players);
+    const tour = await Tournament.findById(id).populate('players');
+
+    return res.status(200).json(tour);
   } catch (err) {
     return res.status(500).json(err.message);
   }

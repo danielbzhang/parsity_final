@@ -115,6 +115,7 @@ export const getPlayers = (tourID) => (dispatch) => {
     .get(`${ROOT_URL}/tours/${tourID}/player`)
     .then(function (response) {
       dispatch({ type: GET_PLAYERS, payload: response.data });
+      // callback();
     })
     .catch(function (error) {
       console.log('error in getPlayers', error);
