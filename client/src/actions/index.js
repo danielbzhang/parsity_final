@@ -6,6 +6,8 @@ import {
   GET_TOURNAMENTS,
   UPDATE_TOURNAMENT,
   DELETE_TOURNAMENT,
+  ADD_PLAYER,
+  GET_PLAYERS,
 } from './type';
 
 const ROOT_URL = 'http://localhost:8000';
@@ -83,5 +85,27 @@ export const deleteTournament = (tourID) => (dispatch) => {
     })
     .catch(function (error) {
       console.log('error in deleteTournament', error);
+    });
+};
+
+export const addPlayer = (playerData, tourID) => (dispatch) => {
+  axios
+    .post(`${ROOT_URL}/tours/${tourID}/player`, playerData)
+    .then(function (response) {
+      dispatch({ type: ADD_PLAYER, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in addPlayer', error);
+    });
+};
+
+export const getPlayers = (tourID) => (dispatch) => {
+  axios
+    .get(`${ROOT_URL}/tours/${tourID}/player`)
+    .then(function (response) {
+      dispatch({ type: GET_PLAYERS, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in getPlayers', error);
     });
 };

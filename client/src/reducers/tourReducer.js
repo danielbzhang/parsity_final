@@ -3,14 +3,13 @@ import {
   GET_TOURNAMENTS,
   UPDATE_TOURNAMENT,
   DELETE_TOURNAMENT,
+  ADD_PLAYER,
 } from '../actions/type';
 
 const defaultState = [];
 const tourReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TOURNAMENT:
-      console.log('state::: ', state);
-      console.log('action.payload::: ', action.payload);
       return [action.payload, ...state];
     case GET_TOURNAMENTS:
       return action.payload;
@@ -20,6 +19,10 @@ const tourReducer = (state = defaultState, action) => {
       );
     case DELETE_TOURNAMENT:
       return state.filter((tour) => tour._id !== action.payload._id);
+    case ADD_PLAYER:
+      // console.log('state::: ', state);
+      // console.log('action.payload::: ', action.payload.players);
+      return action.payload;
     default:
       return state;
   }

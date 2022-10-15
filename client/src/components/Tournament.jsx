@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -88,6 +89,9 @@ const Tournament = ({ tour }) => {
             <ul>
               <li>Date: {tour.hostDate}</li>
               <li>Location: {tour.hostLocation}</li>
+              <li>
+                <Link to='/tours/:id/players'>Add Player</Link>
+              </li>
             </ul>
           </Modal.Body>
           <Modal.Footer>

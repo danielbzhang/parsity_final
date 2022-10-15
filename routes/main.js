@@ -1,5 +1,6 @@
 const express = require('express');
 const Tournament = require('../models/Tournament');
+const Player = require('../models/Player');
 const router = express.Router();
 
 router.post('/api/tours', async (req, res) => {
@@ -11,7 +12,7 @@ router.post('/api/tours', async (req, res) => {
       hostLocation,
       createdAt: Date.now(),
     });
-    console.log('post newTour:', newTour);
+    // console.log('post newTour:', newTour);
     await newTour.save();
     return res.status(200).json(newTour);
   } catch (err) {
@@ -50,6 +51,47 @@ router.delete('/tours/:id', async (req, res) => {
     const tour = await Tournament.findByIdAndDelete(id);
 
     return res.status(200).json(tour);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
+
+router.post('/tours/:id/player', async (req, res, next) => {
+  const id = req.params.id;
+  console.log('TOURS ID: ', id);
+  // const id = '6349a9d83e649a2368a38fcc';
+  const { firstname, lastname, sex, phone, email } = req.body;
+  const newPlayer = await Player.create({
+    firstname,
+    lastname,
+    sex,
+    phone,
+    email,
+  });
+  // await newPlayer.save();
+  Tournament.findOneAndUpdate(
+    { _id: id },
+    { $push: { players: newPlayer } },
+    { new: true }
+  )
+    .populate('players')
+    .exec((err, tour) => {
+      if (err) {
+        res.status(400).send(err);
+        return next(err);
+      } else {
+        // console.log('TTTOURR: ', tour);
+        res.status(200).send(tour);
+      }
+    });
+});
+
+router.get('/tours/:id/player', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const tours = await Tournament.find({ id });
+    const players = tours.players;
+    return res.status(200).json(players);
   } catch (err) {
     return res.status(500).json(err.message);
   }

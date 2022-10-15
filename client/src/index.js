@@ -13,7 +13,8 @@ import App from './App';
 import Login from './components/Login';
 import Register from './components/Register';
 import TournamentMain from './components/TournamentMain';
-// import Tournament from '../../models/Tournament';
+import PlayerList from './components/PlayerList';
+import AllPlayers from './components/AllPlayers';
 
 // const store = createStore(
 //   rootReducer,
@@ -30,6 +31,8 @@ root.render(
         <Route exact path='/auth/login' element={<Login />} />
         <Route exact path='/auth/register' element={<Register />} />
         <Route exact path='/api/main' element={<TournamentMain />} />
+        <Route exact path='/tours/:id/players' element={<PlayerList />} />
+        <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
       </Routes>
     </BrowserRouter>
   </Provider>
