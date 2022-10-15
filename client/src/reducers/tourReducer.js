@@ -4,6 +4,7 @@ import {
   UPDATE_TOURNAMENT,
   DELETE_TOURNAMENT,
   ADD_PLAYER,
+  // GET_TOURNAMENT,
 } from '../actions/type';
 
 const defaultState = [];
@@ -13,6 +14,11 @@ const tourReducer = (state = defaultState, action) => {
       return [action.payload, ...state];
     case GET_TOURNAMENTS:
       return action.payload;
+    // case GET_TOURNAMENT:
+    //   return action.payload;
+    // return state.map((tour) =>
+    //   tour._id === action.payload._id ? tour : action.payload
+    // );
     case UPDATE_TOURNAMENT:
       return state.map((tour) =>
         tour._id === action.payload._id ? { ...tour, ...action.payload } : tour

@@ -11,7 +11,7 @@ const PlayerList = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const tourId = useSelector((state) => state.rootReducer.tour._id);
+  const tourId = useSelector((state) => state.rootReducer.tourOne._id);
 
   const onSubmit = (data) => {
     console.log('tourIDDDDDDD:', tourId);

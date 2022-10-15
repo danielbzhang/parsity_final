@@ -8,6 +8,7 @@ import {
   DELETE_TOURNAMENT,
   ADD_PLAYER,
   GET_PLAYERS,
+  GET_TOURNAMENT,
 } from './type';
 
 const ROOT_URL = 'http://localhost:8000';
@@ -64,6 +65,16 @@ export const getTournaments = () => (dispatch) => {
     })
     .catch(function (error) {
       console.log('error in getTournaments', error);
+    });
+};
+export const getTournament = (tourID) => (dispatch) => {
+  axios
+    .get(`${ROOT_URL}/tours/${tourID}`)
+    .then(function (response) {
+      dispatch({ type: GET_TOURNAMENT, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in getTournament', error);
     });
 };
 

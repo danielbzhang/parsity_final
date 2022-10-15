@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { updateTournament, deleteTournament } from '../actions';
+import { updateTournament, deleteTournament, getTournament } from '../actions';
 
 const Tournament = ({ tour }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,10 @@ const Tournament = ({ tour }) => {
 
   return (
     <>
-      <li className='tour-list-li'>
+      <li
+        className='tour-list-li'
+        onClick={() => dispatch(getTournament(tour._id))}
+      >
         <span className='tour-content' style={{ display: edit ? 'none' : '' }}>
           {tour.title}
         </span>

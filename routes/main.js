@@ -28,6 +28,15 @@ router.get('/api/tours', async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
+router.get('/tours/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const tour = await Tournament.findById(id);
+    return res.status(200).json(tour);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
 
 router.put('/tours/:id', async (req, res) => {
   try {
@@ -89,8 +98,9 @@ router.post('/tours/:id/player', async (req, res, next) => {
 router.get('/tours/:id/player', async (req, res) => {
   try {
     const id = req.params.id;
-    const tours = await Tournament.find({ id });
-    const players = tours.players;
+    const tour = await Tournament.findById(id);
+    const players = tour.players;
+    // console.log(players);
     return res.status(200).json(players);
   } catch (err) {
     return res.status(500).json(err.message);
