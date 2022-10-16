@@ -15,6 +15,7 @@ import Register from './components/Register';
 import TournamentMain from './components/TournamentMain';
 import PlayerList from './components/PlayerList';
 import AllPlayers from './components/AllPlayers';
+import StripeMain from './components/StripeMain';
 
 // const store = createStore(
 //   rootReducer,
@@ -33,6 +34,7 @@ root.render(
         <Route exact path='/api/main' element={<TournamentMain />} />
         <Route exact path='/tours/:id/players' element={<PlayerList />} />
         <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
+        <Route exact path='/payment' element={<StripeMain />} />
       </Routes>
     </BrowserRouter>
   </Provider>

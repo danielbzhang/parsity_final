@@ -3,14 +3,31 @@ import TourForm from './TourForm';
 import TouramentList from './TouramentList';
 import '../css/tourmain.css';
 
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 const TournamentMain = () => {
-  return (
-    <>
-      <Nav />
-      <TourForm />
-      <TouramentList />
-    </>
+  const authenticated = useSelector(
+    (state) => state.rootReducer.auth.authenticated
   );
+
+  if (authenticated) {
+    return (
+      <>
+        <Nav />
+        <TourForm />
+        <TouramentList />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>Please Login First!</h1>
+
+        <Link to='/auth/login'>Go to Login Page</Link>
+      </>
+    );
+  }
 };
 
 export default TournamentMain;

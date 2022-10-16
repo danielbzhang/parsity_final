@@ -3,7 +3,11 @@ const Tournament = require('../models/Tournament');
 const Player = require('../models/Player');
 const router = express.Router();
 
-router.post('/api/tours', async (req, res) => {
+const passportService = require('../controllers/passport');
+const passport = require('passport');
+const requireAuth = passport.authenticate('jwt', { session: false });
+
+router.post('/api/tours', requireAuth, async (req, res) => {
   try {
     const { title, hostDate, hostLocation } = req.body;
     const newTour = await Tournament.create({
@@ -12,7 +16,6 @@ router.post('/api/tours', async (req, res) => {
       hostLocation,
       createdAt: Date.now(),
     });
-    // console.log('post newTour:', newTour);
     await newTour.save();
     return res.status(200).json(newTour);
   } catch (err) {
@@ -20,7 +23,7 @@ router.post('/api/tours', async (req, res) => {
   }
 });
 
-router.get('/api/tours', async (req, res) => {
+router.get('/api/tours', requireAuth, async (req, res) => {
   try {
     const tours = await Tournament.find({}).sort({ createdAt: 'desc' });
     return res.status(200).json(tours);
@@ -28,7 +31,7 @@ router.get('/api/tours', async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
-router.get('/tours/:id', async (req, res) => {
+router.get('/tours/:id', requireAuth, async (req, res) => {
   try {
     const id = req.params.id;
     const tour = await Tournament.findById(id).populate('players');
@@ -70,13 +73,6 @@ router.post('/tours/:id/player', async (req, res, next) => {
   // console.log('TOURS ID: ', id);
   // const id = '6349a9d83e649a2368a38fcc';
   const { firstname, lastname, sex, phone, email } = req.body;
-  // if (sex === 'm') {
-  //   sex = 'Male';
-  // } else {
-  //   sex = 'Female';
-  // }
-
-  // sex = sex === 'm' ? 'Male' : 'Female';
 
   const newPlayer = await Player.create({
     firstname,

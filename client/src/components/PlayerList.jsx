@@ -4,6 +4,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
+import Nav from './Nav';
+
 import { addPlayer } from '../actions';
 import { getPlayers } from '../actions';
 
@@ -16,12 +18,15 @@ const PlayerList = () => {
   const tourId = useSelector((state) => state.rootReducer.tourOne._id);
 
   const onSubmit = (data) => {
-    console.log('tourIDDDDDDD:', tourId);
+    // console.log('tourIDDDDDDD:', tourId);
     dispatch(addPlayer(data, tourId));
   };
 
   return (
     <>
+      <div>
+        <Nav />
+      </div>
       <form className='playerlist' onSubmit={handleSubmit(onSubmit)}>
         <FloatingLabel
           controlId='floatingFirstname'
@@ -86,17 +91,14 @@ const PlayerList = () => {
           Add Player
         </button>
       </form>
-      <Link to='/tours/:id/allplayers' onClick={() => getPlayers(tourId)}>
-        All Players List
-      </Link>
-      {/* <button
-        className='btn btn-outline-secondary'
-        onClick={() =>
-          getPlayers(tourId, () => navigate('/tours/:id/allplayers'))
-        }
-      >
-        All Players List
-      </button> */}
+      <div>
+        <Link to='/tours/:id/allplayers' onClick={() => getPlayers(tourId)}>
+          All Players List
+        </Link>
+      </div>
+      <div>
+        <Link to='/api/main'>Go Back</Link>
+      </div>
     </>
   );
 };

@@ -41,7 +41,7 @@ const TourForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log('TourForm data: ', data);
+    // console.log('TourForm data: ', data);
     dispatch(addTournament(data));
   };
 

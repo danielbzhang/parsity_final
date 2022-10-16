@@ -47,8 +47,14 @@ export const handleLogout = (callback) => (dispatch) => {
 };
 
 export const addTournament = (tourData) => (dispatch) => {
+  // const token = localStorage.token;
+  const config = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  };
   axios
-    .post(`${ROOT_URL}/api/tours`, tourData)
+    .post(`${ROOT_URL}/api/tours`, tourData, config)
     .then(function (response) {
       dispatch({ type: ADD_TOURNAMENT, payload: response.data });
     })
@@ -58,8 +64,13 @@ export const addTournament = (tourData) => (dispatch) => {
 };
 
 export const getTournaments = () => (dispatch) => {
+  const config = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  };
   axios
-    .get(`${ROOT_URL}/api/tours`)
+    .get(`${ROOT_URL}/api/tours`, config)
     .then(function (response) {
       dispatch({ type: GET_TOURNAMENTS, payload: response.data });
     })
@@ -68,8 +79,13 @@ export const getTournaments = () => (dispatch) => {
     });
 };
 export const getTournament = (tourID) => (dispatch) => {
+  const config = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  };
   axios
-    .get(`${ROOT_URL}/tours/${tourID}`)
+    .get(`${ROOT_URL}/tours/${tourID}`, config)
     .then(function (response) {
       dispatch({ type: GET_TOURNAMENT, payload: response.data });
     })

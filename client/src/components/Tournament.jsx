@@ -95,6 +95,9 @@ const Tournament = ({ tour }) => {
               <li>
                 <Link to='/tours/:id/players'>Add Player</Link>
               </li>
+              <li>
+                <Link to='/tours/:id/allplayers'>All Players List</Link>
+              </li>
             </ul>
           </Modal.Body>
           <Modal.Footer>

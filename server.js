@@ -5,6 +5,7 @@ const cors = require('cors');
 const connectDB = require('./database/db');
 const authRouter = require('./routes/auth');
 const tourRouter = require('./routes/main');
+const stripeRouter = require('./routes/stripe');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use('/', tourRouter);
+app.use('/', stripeRouter);
 
 authRouter(app);
 

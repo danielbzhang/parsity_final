@@ -64,7 +64,12 @@ const Login = () => {
           Submit
         </button>
       </form>
-      <Link to='/auth/register'>Create an account</Link>
+      <div>
+        <Link to='/auth/register'>Create an account</Link>
+      </div>
+      <div>
+        <Link to='/payment'>Donate to our club!</Link>
+      </div>
     </>
   );
 };

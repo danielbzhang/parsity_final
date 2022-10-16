@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
+import printJS from 'print-js';
 
 import Nav from './Nav';
 
@@ -11,7 +11,6 @@ import { getPlayers } from '../actions';
 const AllPlayers = () => {
   const dispatch = useDispatch();
   const tourId = useSelector((state) => state.rootReducer.tourOne._id);
-  // const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     dispatch(getPlayers(tourId));
@@ -24,47 +23,47 @@ const AllPlayers = () => {
   const allPlayers = useSelector((state) => state.rootReducer.tourOne.players);
   console.log('AllpLyaers:', allPlayers);
 
+  const capFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   const renderPlayers = () => {
     return allPlayers.map((player) => {
       return (
         <tr key={player._id}>
-          <td>{player.firstname}</td>
-          <td>{player.lastname}</td>
-          <td>{player.sex}</td>
+          <td>{capFirstLetter(player.firstname)}</td>
+          <td>{capFirstLetter(player.lastname)}</td>
+          <td>{player.sex.toUpperCase()}</td>
           <td>{player.phone}</td>
           <td>{player.email}</td>
           <td>
             <span className='edit-icon' onClick={handleShowTrash}>
               <i className='fas fa-trash' />
             </span>
-
-            <Modal show={showTrash} onHide={handleCloseTrash}>
-              <Modal.Body>
-                Are you sure you want to delete?
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant='outline-primary' onClick={handleCloseTrash}>
-                  No
-                </Button>
-                <Button
-                  variant='outline-danger'
-                  // onClick={() => dispatch(deleteTournament(tour._id))}
-                >
-                  Yes
-                </Button>
-              </Modal.Footer>
-            </Modal>
           </td>
         </tr>
       );
     });
   };
 
+  const printForm = () => {
+    printJS({
+      printable: 'player-table',
+      type: 'html',
+      targetStyles: ['*'],
+    });
+  };
+
   return (
     <>
-      {/* <button onClick={handleLogoutclick}>Log out</button> */}
       <Nav />
-      <Table className='player-table' striped bordered hover>
+      <div>
+        <Link to='/tours/:id/players'>Go Back</Link>
+      </div>
+      <div>
+        <Link to='/api/main'>Home Page</Link>
+      </div>
+      <Table className='player-table' id='player-table' striped bordered hover>
         <thead>
           <tr>
             <th>First Name</th>
@@ -76,6 +75,9 @@ const AllPlayers = () => {
         </thead>
         <tbody>{renderPlayers()}</tbody>
       </Table>
+      <button type='button' onClick={() => printForm()}>
+        Print
+      </button>
     </>
   );
 };
