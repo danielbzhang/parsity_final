@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 import '../css/stripeform.css';
 // docs boiler code for styling
-const CARD_OPTIONS = {
-  iconStyle: 'solid',
+const cardStyling = {
   style: {
     base: {
       iconColor: '#c4f0ff',
@@ -18,60 +17,55 @@ const CARD_OPTIONS = {
       '::placeholder': { color: '#87bbfd' },
     },
     invalid: {
-      iconColor: '#ffc7ee',
-      color: '#ffc7ee',
+      iconColor: '#FFC7EE',
+      color: '#FFC7EE',
     },
   },
 };
 
+// from Github stripe/react-stripe-js -- using hooks
 const StripeForm = () => {
-  const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (elements == null) {
+      return;
+    }
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
     });
 
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        const response = await axios.post('http://localhost:8000/payment', {
-          amount: 500,
-          id,
-        });
-
-        if (response.data.success) {
-          console.log('Successful payment');
-          setSuccess(true);
-        }
-      } catch (error) {
-        console.log('Error', error);
-      }
+    if (error) {
+      alert(error);
     } else {
-      console.log(error.message);
+      const config = { amount: 500, id: paymentMethod.id };
+      axios
+        .post('http://localhost:8000/payment', config)
+        .then((response) => {
+          if (response.data.success) {
+            alert('Success! Thanks for your donation!');
+          } else {
+            alert('Failed');
+          }
+        })
+        .catch((err) => {
+          console.log('error in createPaymentMethod', err.message);
+        });
     }
   };
 
   return (
     <>
-      {!success ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset className='FormGroup'>
-            <div className='FormRow'>
-              <CardElement options={CARD_OPTIONS} />
-            </div>
-          </fieldset>
-          <button>Make A Donation</button>
-        </form>
-      ) : (
-        <div>
-          <h2>Thanks for you donation!</h2>
-        </div>
-      )}
+      <form onSubmit={handleSubmit}>
+        <CardElement />
+        <button type='submit' disabled={!stripe || !elements}>
+          Donate $5
+        </button>
+      </form>
     </>
   );
 };

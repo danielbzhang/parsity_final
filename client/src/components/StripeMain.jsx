@@ -6,12 +6,12 @@ import StripeForm from './StripeForm';
 
 const PUBLIC_KEY =
   'pk_test_51LrXV7GYfyzkTIYrVK2DafROIkKyH9org6xikSCYS1DvyNIKfL0rq1Oshv3WL8EsfAA51Njl8aQeSCMcv92Zjzy700tC84MKAX';
-const stripeLoad = loadStripe(PUBLIC_KEY);
+const stripePromise = loadStripe(PUBLIC_KEY);
 
 const StripeMain = () => {
   return (
     <>
-      <Elements stripe={stripeLoad}>
+      <Elements stripe={stripePromise}>
         <StripeForm />
       </Elements>
       <div>
