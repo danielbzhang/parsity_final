@@ -111,4 +111,16 @@ router.get('/tours/:id/player', async (req, res) => {
   }
 });
 
+router.delete('/tours/:tourID/table/:playerID', async (req, res) => {
+  try {
+    console.log('table delete params: ', req.params);
+    const { tourID, playerID } = req.params;
+    const player = await Player.findByIdAndDelete(playerID);
+    const tour = await Tournament.findById(tourID).populate('players');
+    return res.status(200).json(tour);
+  } catch (err) {
+    return res.status(500).json(err.message);
+  }
+});
+
 module.exports = router;

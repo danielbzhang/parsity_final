@@ -51,10 +51,6 @@ const Tournament = ({ tour }) => {
           />
         </form>
 
-        {/* <span
-          className='edit-icon'
-          onClick={() => dispatch(deleteTournament(tour._id))}
-        > */}
         <span className='edit-icon' onClick={handleShowTrash}>
           <i className='fas fa-trash' />
         </span>

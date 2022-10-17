@@ -3,22 +3,22 @@ import axios from 'axios';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 import '../css/stripeform.css';
-// docs boiler code for styling
+// from Stripe docs
 const cardStyling = {
   style: {
     base: {
       iconColor: '#c4f0ff',
-      color: '#fff',
+      color: '#000080',
       fontWeight: 500,
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
       ':-webkit-autofill': { color: '#fce883' },
-      '::placeholder': { color: '#87bbfd' },
+      '::placeholder': { color: '#000080' },
     },
     invalid: {
-      iconColor: '#FFC7EE',
-      color: '#FFC7EE',
+      iconColor: '#800080',
+      color: '#87bbfd',
     },
   },
 };
@@ -58,7 +58,7 @@ const StripeForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <CardElement />
+        <CardElement options={cardStyling} />
         <button type='submit' disabled={!stripe || !elements}>
           Donate $5
         </button>

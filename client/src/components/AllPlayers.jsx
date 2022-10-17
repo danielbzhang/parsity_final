@@ -1,12 +1,14 @@
+import React, { useEffect, useState } from 'react';
+import ReactTable from 'react-table';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import printJS from 'print-js';
+// import { Table, Button } from 'react-bootstrap';
 
 import Nav from './Nav';
 
-import { getPlayers } from '../actions';
+import { getPlayers, deleteTableRow } from '../actions';
 
 const AllPlayers = () => {
   const dispatch = useDispatch();
@@ -14,14 +16,17 @@ const AllPlayers = () => {
 
   useEffect(() => {
     dispatch(getPlayers(tourId));
-  }, []);
+  }, [tourId]);
+
+  const handleDeleteTableRow = (id1, id2) => {
+    dispatch(deleteTableRow(id1, id2));
+  };
 
   const [showTrash, setShowTrash] = useState(false);
   const handleCloseTrash = () => setShowTrash(false);
   const handleShowTrash = () => setShowTrash(true);
 
   const allPlayers = useSelector((state) => state.rootReducer.tourOne.players);
-  console.log('AllpLyaers:', allPlayers);
 
   const capFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -37,10 +42,18 @@ const AllPlayers = () => {
           <td>{player.phone}</td>
           <td>{player.email}</td>
           <td>
-            <span className='edit-icon' onClick={handleShowTrash}>
+            <span
+              className='edit-icon'
+              onClick={() => handleDeleteTableRow(tourId, player._id)}
+            >
               <i className='fas fa-trash' />
             </span>
           </td>
+          {/* <td>
+            <button onClick={() => handleDeleteTableRow(tourId, player._id)}>
+              delete
+            </button>
+          </td> */}
         </tr>
       );
     });
@@ -71,6 +84,7 @@ const AllPlayers = () => {
             <th>Gender</th>
             <th>Phone Number</th>
             <th>Email Address</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>{renderPlayers()}</tbody>

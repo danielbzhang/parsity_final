@@ -9,6 +9,7 @@ import {
   ADD_PLAYER,
   GET_PLAYERS,
   GET_TOURNAMENT,
+  DELETE_TABLE_ROW,
 } from './type';
 
 const ROOT_URL = 'http://localhost:8000';
@@ -135,5 +136,16 @@ export const getPlayers = (tourID) => (dispatch) => {
     })
     .catch(function (error) {
       console.log('error in getPlayers', error);
+    });
+};
+
+export const deleteTableRow = (tourID, playerID) => (dispatch) => {
+  axios
+    .delete(`${ROOT_URL}/tours/${tourID}/table/${playerID}`)
+    .then(function (response) {
+      dispatch({ type: DELETE_TABLE_ROW, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log('error in deleteTableRow', error);
     });
 };

@@ -9,3 +9,5 @@ export const GET_TOURNAMENT = 'get_tournament';
 
 export const ADD_PLAYER = 'add_player';
 export const GET_PLAYERS = 'get_players';
+
+export const DELETE_TABLE_ROW = 'delete_table_row';
