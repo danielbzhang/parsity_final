@@ -13,17 +13,10 @@ router.post('/payment', async (req, res) => {
       payment_method: id,
       confirm: true,
     });
-    // console.log('Payment', payment);
-    res.json({
-      message: 'Payment successful',
-      success: true,
-    });
-  } catch (error) {
-    console.log('Error in payment', error);
-    res.json({
-      message: 'Payment failed',
-      success: false,
-    });
+    return res.status(200).json({ msg: 'Transaction Successful' });
+  } catch (err) {
+    console.log('Error in stripe.js', err);
+    return res.status(500).json({ msg: 'Transaction Unsuccessful' });
   }
 });
 

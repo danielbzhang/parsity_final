@@ -46,11 +46,8 @@ const StripeForm = () => {
       axios
         .post('http://localhost:8000/payment', config)
         .then((response) => {
-          if (response.data.success) {
-            alert('Success! Thanks for your donation!');
-          } else {
-            alert('Failed');
-          }
+          // console.log(response);
+          alert(response.data.msg);
         })
         .catch((err) => {
           console.log('error in createPaymentMethod', err.message);
