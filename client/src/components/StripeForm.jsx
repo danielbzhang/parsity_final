@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 import '../css/stripeform.css';
 // from Stripe docs
@@ -27,6 +27,13 @@ const cardStyling = {
 const StripeForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+
+  const appearance = {
+    theme: 'stripe',
+  };
+
+  // Pass the appearance object to the Elements instance
+  // const element = stripe.elements({ clientSecret, appearance });
 
   const handleSubmit = async (e) => {
     e.preventDefault();

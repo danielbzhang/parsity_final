@@ -14,13 +14,13 @@ const TouramentList = () => {
 
   return (
     <>
-      <article>
+      <div>
         <ul>
           {tours.map((tour) => (
             <Tournament key={tour._id} tour={tour} />
           ))}
         </ul>
-      </article>
+      </div>
     </>
   );
 };

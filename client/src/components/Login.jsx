@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { handleLogin } from '../actions';
+import '../css/login.css';
 
 const userSchema = Yup.object().shape({
   username: Yup.string().required(),
@@ -24,7 +25,6 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
-    console.log('onSubmit data: ', data);
     dispatch(
       handleLogin(data, () => {
         navigate('/api/main');
@@ -34,41 +34,44 @@ const Login = () => {
 
   return (
     <>
-      <div>
-        <header>Let's play Badminton!</header>
-      </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='form-group'>
-          <label>Username:</label>
-          <input
-            className='form-control'
-            name='username'
-            {...register('username', { required: true })}
-            type='text'
-          />
-          {errors.username?.message}
-        </div>
+      <div className='login-form'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className='form-group'>
+            <div>
+              <label>Username:</label>
+            </div>
+            <input
+              className='form-control login-label-input'
+              name='username'
+              {...register('username', { required: true })}
+              type='text'
+            />
+            <div style={{ color: 'red' }}>{errors.username?.message}</div>
+          </div>
 
-        <div className='form-group'>
-          <label>Password:</label>
-          <input
-            className='form-control'
-            name='password'
-            {...register('password', { required: true })}
-            type='password'
-          />
-          {errors.password?.message}
-        </div>
+          <div className='form-group'>
+            <div>
+              <label>Password:</label>
+            </div>
+            <input
+              className='form-control login-label-input'
+              name='password'
+              {...register('password', { required: true })}
+              type='password'
+            />
+            <div style={{ color: 'red' }}>{errors.password?.message}</div>
+          </div>
 
-        <button className='btn btn-primary' type='submit'>
-          Submit
-        </button>
-      </form>
-      <div>
-        <Link to='/auth/register'>Create an account</Link>
-      </div>
-      <div>
-        <Link to='/payment'>Donate to our club!</Link>
+          <button className='btn btn-primary login-label-btn' type='submit'>
+            Login
+          </button>
+        </form>
+        <div>
+          <Link to='/auth/register'>Create an account</Link>
+        </div>
+        <div>
+          <Link to='/payment'>Donate to our club!</Link>
+        </div>
       </div>
     </>
   );

@@ -50,7 +50,6 @@ router.put('/tours/:id', async (req, res) => {
       new: true,
     });
     // await todo.save();
-    // const tour = await Tournament.findById(id);
     return res.status(200).json(updatedTour);
   } catch (err) {
     return res.status(500).json(err.message);
@@ -70,8 +69,6 @@ router.delete('/tours/:id', async (req, res) => {
 
 router.post('/tours/:id/player', async (req, res, next) => {
   const id = req.params.id;
-  // console.log('TOURS ID: ', id);
-  // const id = '6349a9d83e649a2368a38fcc';
   const { firstname, lastname, sex, phone, email } = req.body;
 
   const newPlayer = await Player.create({
@@ -94,7 +91,6 @@ router.post('/tours/:id/player', async (req, res, next) => {
         res.status(400).send(err);
         return next(err);
       } else {
-        // console.log('TTTOURR: ', tour);
         res.status(200).send(tour);
       }
     });
@@ -113,7 +109,6 @@ router.get('/tours/:id/player', async (req, res) => {
 
 router.delete('/tours/:tourID/table/:playerID', async (req, res) => {
   try {
-    console.log('table delete params: ', req.params);
     const { tourID, playerID } = req.params;
     const player = await Player.findByIdAndDelete(playerID);
     const tour = await Tournament.findById(tourID).populate('players');

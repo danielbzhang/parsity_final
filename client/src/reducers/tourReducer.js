@@ -3,7 +3,6 @@ import {
   GET_TOURNAMENTS,
   UPDATE_TOURNAMENT,
   DELETE_TOURNAMENT,
-  ADD_PLAYER,
 } from '../actions/type';
 
 const defaultState = [];
@@ -19,8 +18,7 @@ const tourReducer = (state = defaultState, action) => {
       );
     case DELETE_TOURNAMENT:
       return state.filter((tour) => tour._id !== action.payload._id);
-    // case ADD_PLAYER:
-    //   return action.payload;
+
     default:
       return state;
   }

@@ -1,1 +1,40 @@
+.tour-form {
+  /* width: 100px; */
+  margin-top: 5%;
+  margin-bottom: 0;
+  margin-left: 1%;
+  margin-right: 30%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: inherit;
+}
 
+body {
+  /* background: rgba(0, 128, 0, 0.3); */
+}
+
+.tour-list {
+  /* display: grid; */
+}
+
+.tour-list-li {
+  margin-left: 10%;
+  margin-top: 1%;
+  font-size: 1.5em;
+  list-style-type: none;
+}
+
+.edit-icon {
+  float: right;
+  margin-right: 4%;
+}
+
+.edit-input {
+  width: 85%;
+  font-size: 30px;
+  background-color: #ff8c00;
+  border-radius: 5px;
+  border: none;
+}
