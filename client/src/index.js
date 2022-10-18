@@ -16,7 +16,7 @@ import TournamentMain from './components/TournamentMain';
 import PlayerList from './components/PlayerList';
 import AllPlayers from './components/AllPlayers';
 import StripeMain from './components/StripeMain';
-import ReactTable from './components/ReactTable';
+import ResultTree from './components/ResultTree';
 
 // const store = createStore(
 //   rootReducer,
@@ -36,11 +36,7 @@ root.render(
         <Route exact path='/tours/:id/players' element={<PlayerList />} />
         <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
         <Route exact path='/payment' element={<StripeMain />} />
-        <Route
-          exact
-          path='/tours/:id/allplayerstable'
-          element={<ReactTable />}
-        />
+        <Route exact path='/tours/:id/result' element={<ResultTree />} />
       </Routes>
     </BrowserRouter>
   </Provider>

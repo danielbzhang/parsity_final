@@ -38,3 +38,44 @@ body {
   border-radius: 5px;
   border: none;
 }
+/* box-sizing: border-box; */
+
+.node__root none {
+  fill: orange;
+}
+
+.node__branch circle {
+  fill: yellow;
+}
+
+.node__leaf circle {
+  fill: green;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.elemental-node {
+  font-size: 15px;
+  box-sizing: border-box;
+  color: black;
+  padding: 4px 5px;
+  border-radius: 10px;
+  height: 50px;
+  width: 130px;
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 35px 0;
+  background-color: #ffcc99;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}

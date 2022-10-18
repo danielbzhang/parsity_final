@@ -22,9 +22,9 @@ const AllPlayers = () => {
     dispatch(deleteTableRow(id1, id2));
   };
 
-  const [showTrash, setShowTrash] = useState(false);
-  const handleCloseTrash = () => setShowTrash(false);
-  const handleShowTrash = () => setShowTrash(true);
+  // const [showTrash, setShowTrash] = useState(false);
+  // const handleCloseTrash = () => setShowTrash(false);
+  // const handleShowTrash = () => setShowTrash(true);
 
   const allPlayers = useSelector((state) => state.rootReducer.tourOne.players);
 
@@ -39,21 +39,16 @@ const AllPlayers = () => {
           <td>{capFirstLetter(player.firstname)}</td>
           <td>{capFirstLetter(player.lastname)}</td>
           <td>{player.sex.toUpperCase()}</td>
-          <td>{player.phone}</td>
+          <td>{'('+player.phone.slice(0,3)+')'+player.phone.slice(3,10)}</td>
           <td>{player.email}</td>
           <td>
             <span
-              className='edit-icon'
+              className='table-icon'
               onClick={() => handleDeleteTableRow(tourId, player._id)}
             >
               <i className='fas fa-trash' />
             </span>
           </td>
-          {/* <td>
-            <button onClick={() => handleDeleteTableRow(tourId, player._id)}>
-              delete
-            </button>
-          </td> */}
         </tr>
       );
     });
