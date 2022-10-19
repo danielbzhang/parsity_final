@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 import '../css/stripeform.css';
-// from Stripe docs
+// Stripe docs
 const cardStyling = {
   style: {
     base: {
-      iconColor: '#c4f0ff',
+      iconColor: '#000080',
       color: '#000080',
       fontWeight: 500,
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
@@ -23,7 +23,7 @@ const cardStyling = {
   },
 };
 
-// from Github stripe/react-stripe-js -- using hooks
+// Github stripe/react-stripe-js -- using hooks
 const StripeForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -47,7 +47,7 @@ const StripeForm = () => {
     });
 
     if (error) {
-      alert(error);
+      alert('Invalid Card Number');
     } else {
       const config = { amount: 500, id: paymentMethod.id };
       axios
@@ -64,9 +64,13 @@ const StripeForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className='stripe-form' onSubmit={handleSubmit}>
         <CardElement options={cardStyling} />
-        <button type='submit' disabled={!stripe || !elements}>
+        <button
+          className='stripe-btn'
+          type='submit'
+          disabled={!stripe || !elements}
+        >
           Donate $5
         </button>
       </form>

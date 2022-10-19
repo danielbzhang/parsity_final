@@ -35,7 +35,7 @@ root.render(
         <Route exact path='/api/main' element={<TournamentMain />} />
         <Route exact path='/tours/:id/players' element={<PlayerList />} />
         <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
-        <Route exact path='/payment' element={<StripeMain />} />
+        {/* <Route exact path='/payment' element={<StripeMain />} /> */}
         <Route exact path='/tours/:id/result' element={<ResultTree />} />
       </Routes>
     </BrowserRouter>

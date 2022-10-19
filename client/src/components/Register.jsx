@@ -6,6 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { handleRegister } from '../actions';
 
+import StripeMain from './StripeMain';
+
 const userSchema = Yup.object().shape({
   username: Yup.string()
     .min(5, 'must be at least 5 characters long')
@@ -69,6 +71,9 @@ const Register = () => {
         <div className='register-link'>
           <Link to='/auth/login'>Already have an account</Link>
         </div>
+      </div>
+      <div>
+        <StripeMain />
       </div>
     </>
   );

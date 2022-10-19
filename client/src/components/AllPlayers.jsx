@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactTable from 'react-table';
+// import ReactTable from 'react-table';
 import { useDispatch, useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
@@ -39,7 +39,9 @@ const AllPlayers = () => {
           <td>{capFirstLetter(player.firstname)}</td>
           <td>{capFirstLetter(player.lastname)}</td>
           <td>{player.sex.toUpperCase()}</td>
-          <td>{'('+player.phone.slice(0,3)+')'+player.phone.slice(3,10)}</td>
+          <td>
+            {'(' + player.phone.slice(0, 3) + ')' + player.phone.slice(3, 10)}
+          </td>
           <td>{player.email}</td>
           <td>
             <span
@@ -65,28 +67,39 @@ const AllPlayers = () => {
   return (
     <>
       <Nav />
-      <div>
-        <Link to='/tours/:id/players'>Go Back</Link>
+      <div className='player-back-btn'>
+        <div>
+          <Link to='/tours/:id/players'>Go Back</Link>
+        </div>
+        <div className='player-home-page'>
+          <Link to='/tours/:id/result'>Schedule</Link>
+        </div>
+        <div className='player-home-page'>
+          <Link to='/api/main'>Home Page</Link>
+        </div>
       </div>
-      <div>
-        <Link to='/api/main'>Home Page</Link>
+      <div className='player-table'>
+        <button
+          className='table-print'
+          type='button'
+          onClick={() => printForm()}
+        >
+          Print
+        </button>
+        <Table id='player-table' striped bordered hover>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Gender</th>
+              <th>Phone Number</th>
+              <th>Email Address</th>
+              <th>Option</th>
+            </tr>
+          </thead>
+          <tbody>{renderPlayers()}</tbody>
+        </Table>
       </div>
-      <Table className='player-table' id='player-table' striped bordered hover>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th>Phone Number</th>
-            <th>Email Address</th>
-            <th>Options</th>
-          </tr>
-        </thead>
-        <tbody>{renderPlayers()}</tbody>
-      </Table>
-      <button type='button' onClick={() => printForm()}>
-        Print
-      </button>
     </>
   );
 };

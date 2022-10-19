@@ -1,5 +1,4 @@
 .tour-form {
-  /* width: 100px; */
   margin-top: 5%;
   margin-bottom: 0;
   margin-left: 1%;
@@ -27,8 +26,8 @@ body {
 }
 
 .edit-icon {
-  float: right;
-  margin-right: 4%;
+  /* float: right; */
+  margin-right: 0.5%;
 }
 
 .edit-input {
@@ -38,9 +37,8 @@ body {
   border-radius: 5px;
   border: none;
 }
-/* box-sizing: border-box; */
 
-.node__root none {
+/* .node__root none {
   fill: orange;
 }
 
@@ -50,7 +48,7 @@ body {
 
 .node__leaf circle {
   fill: green;
-}
+} */
 
 .node text {
   font: 12px sans-serif;

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Tree from 'react-d3-tree';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactToPrint from 'react-to-print';
 
@@ -304,7 +305,7 @@ const ResultTree = () => {
     ],
   };
 
-  const [node, setNode] = useState(2);
+  const [node, setNode] = useState(1);
   const componentRef = useRef();
   // const nodeNumber = ['2', '3', '4', '5'];
   const playerNumber = ['≤4', '≤8', '≤16', '≤32'];
@@ -350,6 +351,15 @@ const ResultTree = () => {
             </option>
           ))}
         </select>
+      </div>
+
+      <div>
+        <div>
+          <Link to='/tours/:id/allplayers'>Go Back</Link>
+        </div>
+        <div>
+          <Link to='/api/main'>Home Page</Link>
+        </div>
       </div>
 
       <div

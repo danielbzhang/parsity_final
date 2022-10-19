@@ -11,11 +11,13 @@ const stripePromise = loadStripe(PUBLIC_KEY);
 const StripeMain = () => {
   return (
     <>
-      <Elements stripe={stripePromise}>
-        <StripeForm />
-      </Elements>
-      <div>
-        <Link to='/auth/login'>Back to Login Page</Link>
+      <div className='stripe-payment'>
+        <Elements stripe={stripePromise}>
+          <StripeForm />
+        </Elements>
+        {/* <div>
+          <Link to='/auth/login'>Back to Login Page</Link>
+        </div> */}
       </div>
     </>
   );
