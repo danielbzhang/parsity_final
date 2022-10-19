@@ -15,8 +15,14 @@ const TournamentMain = () => {
     return (
       <>
         <Nav />
-        <TourForm />
-        <TouramentList />
+        <div className='main-page'>
+          <div className='tour-form-style'>
+            <TourForm />
+          </div>
+          <div className='tour-form-style'>
+            <TouramentList />
+          </div>
+        </div>
       </>
     );
   } else {

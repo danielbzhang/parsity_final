@@ -15,7 +15,7 @@ const TouramentList = () => {
   return (
     <>
       <div className='tour-list'>
-        <ul>
+        <ul className='tournaments'>
           {tours.map((tour) => (
             <Tournament key={tour._id} tour={tour} />
           ))}

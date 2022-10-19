@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactToPrint from 'react-to-print';
 
+import PlayerCards from './PlayerCards';
+
 const ResultTree = () => {
   const playersChart = {
     name: 'Daniel',
@@ -361,28 +363,34 @@ const ResultTree = () => {
           <Link to='/api/main'>Home Page</Link>
         </div>
       </div>
-
-      <div
-        className='result-tree'
-        ref={componentRef}
-        style={{ width: '100%', height: '50em' }}
-      >
-        <Tree
-          data={playersChart}
-          renderCustomNodeElement={(rd3tProps) => customNode({ ...rd3tProps })}
-          pathFunc='step'
-          collapsible={true}
-          zoomable={true}
-          initialDepth={node}
-          orientation='horizontal'
-          // orientation='vertical'
-          nodeSize={{ x: 300, y: 105 }}
-          hasInteractiveNodes={true}
-          separation={{ siblings: 0.5, nonSiblings: 1 }}
-          rootNodeClassName='node__root'
-          branchNodeClassName='node__branch'
-          leafNodeClassName='node__leaf'
-        />
+      <div className='tree-playercards'>
+        <div
+          className='result-tree'
+          ref={componentRef}
+          style={{ width: '100%', height: '50em' }}
+        >
+          <Tree
+            data={playersChart}
+            renderCustomNodeElement={(rd3tProps) =>
+              customNode({ ...rd3tProps })
+            }
+            pathFunc='step'
+            collapsible={true}
+            zoomable={true}
+            initialDepth={node}
+            orientation='horizontal'
+            // orientation='vertical'
+            nodeSize={{ x: 300, y: 105 }}
+            hasInteractiveNodes={true}
+            separation={{ siblings: 0.5, nonSiblings: 1 }}
+            rootNodeClassName='node__root'
+            branchNodeClassName='node__branch'
+            leafNodeClassName='node__leaf'
+          />
+        </div>
+        <div>
+          <PlayerCards />
+        </div>
       </div>
     </>
   );

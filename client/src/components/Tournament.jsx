@@ -44,7 +44,7 @@ const Tournament = ({ tour }) => {
           onSubmit={onFormSubmit}
         >
           <input
-            className='edit-input'
+            className='edit-input-li'
             type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}

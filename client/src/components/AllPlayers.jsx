@@ -40,7 +40,13 @@ const AllPlayers = () => {
           <td>{capFirstLetter(player.lastname)}</td>
           <td>{player.sex.toUpperCase()}</td>
           <td>
-            {'(' + player.phone.slice(0, 3) + ')' + player.phone.slice(3, 10)}
+            {'(' +
+              player.phone.slice(0, 3) +
+              ')' +
+              ' ' +
+              player.phone.slice(3, 6) +
+              '-' +
+              player.phone.slice(6, 10)}
           </td>
           <td>{player.email}</td>
           <td>
@@ -67,15 +73,17 @@ const AllPlayers = () => {
   return (
     <>
       <Nav />
-      <div className='player-back-btn'>
-        <div>
-          <Link to='/tours/:id/players'>Go Back</Link>
-        </div>
+      <div className='player-list-btn'>
         <div className='player-home-page'>
+          <Link to='/api/main'>Home</Link>
+        </div>
+
+        <div className='player-list-schedule'>
           <Link to='/tours/:id/result'>Schedule</Link>
         </div>
-        <div className='player-home-page'>
-          <Link to='/api/main'>Home Page</Link>
+
+        <div className='player-list-back'>
+          <Link to='/tours/:id/players'>Back</Link>
         </div>
       </div>
       <div className='player-table'>

@@ -55,7 +55,10 @@ const TourForm = () => {
             />
           </FloatingLabel>
 
-          <button className='btn btn-outline-primary' type='submit'>
+          <button
+            className='btn btn-outline-primary tour-form-submit'
+            type='submit'
+          >
             Submit
           </button>
         </form>

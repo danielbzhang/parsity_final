@@ -23,13 +23,21 @@ const PlayerList = () => {
     dispatch(addPlayer(data, tourId));
   };
 
+  const clearForm = () => {
+    document.getElementById('playerlist-form').reset();
+  };
+
   return (
     <>
       <div>
         <Nav />
       </div>
       <div className='player-list-form'>
-        <form className='playerlist' onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className='playerlist'
+          id='playerlist-form'
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <FloatingLabel
             controlId='floatingFirstname'
             label='First Name:'
@@ -89,7 +97,10 @@ const PlayerList = () => {
             />
           </FloatingLabel>
 
-          <button className='btn btn-outline-primary' type='submit'>
+          <button
+            className='btn btn-outline-primary player-form-add-btn'
+            type='submit'
+          >
             Add Player
           </button>
         </form>
@@ -98,8 +109,12 @@ const PlayerList = () => {
             All Players List
           </Link>
         </div>
-        <div className='player-list-link'>
-          <Link to='/api/main'>Go Back</Link>
+        <div className='player-form-back-clear'>
+          <Link to='/api/main'>Back</Link>
+
+          <a className='clear-btn' onClick={() => clearForm()}>
+            Clear
+          </a>
         </div>
       </div>
     </>

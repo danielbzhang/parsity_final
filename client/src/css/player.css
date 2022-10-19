@@ -10,8 +10,21 @@
   font-size: inherit;
 }
 
+.player-form-back-clear {
+  margin-top: 2%;
+  display: flex;
+}
+
+.player-form-add-btn {
+  margin-top: 2%;
+}
+
 .player-list-link {
   margin-top: 2%;
+}
+
+.clear-btn {
+  margin-left: 87%;
 }
 
 .player-table {
@@ -26,6 +39,32 @@
   margin-left: 95%;
 }
 
-.player-back-btn {
-  /* margin-left: 14.5%; */
+.player-list-btn {
+  display: flex;
+  margin-left: 40%;
+}
+
+.player-list-back {
+  margin-right: 10px;
+}
+.player-list-schedule {
+  margin-right: 10px;
+}
+.player-home-page {
+  margin-right: 10px;
+}
+
+.tree-playercards {
+  display: flex;
+}
+
+.playercards {
+  margin-left: auto;
+}
+
+.playercards-list {
+  border: 1px solid;
+  list-style-type: none;
+  margin-top: 10px;
+  margin-right: 30px;
 }

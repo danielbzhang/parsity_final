@@ -67,7 +67,7 @@ const Login = () => {
           </button>
         </form>
         <div>
-          <Link to='/auth/register'>Create an account / Make a donation</Link>
+          <Link to='/auth/register'>Create an account / Accept a donation</Link>
         </div>
         <div>{/* <Link to='/payment'>Donate to our club!</Link> */}</div>
       </div>
