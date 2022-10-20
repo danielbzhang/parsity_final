@@ -63,8 +63,20 @@
 }
 
 .playercards-list {
-  border: 1px solid;
+  /* border: 1px solid; */
+  border: dashed rgb(242, 194, 194);
+  background: rgb(190, 190, 245);
   list-style-type: none;
   margin-top: 10px;
   margin-right: 30px;
+  text-align: center;
+}
+
+.playercards-list:nth-child(odd) {
+  background: rgb(173, 244, 181);
+}
+
+.playercards-ul {
+  width: 300px;
+  padding-right: 20%;
 }
