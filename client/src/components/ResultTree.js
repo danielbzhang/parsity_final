@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import Tree from 'react-d3-tree';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 
 import PlayerCards from './PlayerCards';
 
 const ResultTree = () => {
+  const navigate = useNavigate();
   const playersChart = {
     name: 'Daniel',
     children: [
@@ -323,7 +323,7 @@ const ResultTree = () => {
     }
   };
 
-  const customNode = ({ nodeDatum, toggleNode }) => (
+  const customNode = () => (
     <g>
       <foreignObject x='0' height='100px' width='500px' y='-60px'>
         <div className='elemental-node'></div>
@@ -332,35 +332,46 @@ const ResultTree = () => {
   );
   return (
     <>
-      <ReactToPrint
-        trigger={() => {
-          return <button>Print</button>;
-        }}
-        content={() => componentRef.current}
-        documentTitle='results'
-      />
-
-      <div>
-        <select
-          name='node-number'
-          id='node-number'
-          onChange={handleNodeDropdown}
-        >
-          <option value=''>Number of Players</option>
-          {playerNumber.map((num, index) => (
-            <option value={num} key={index}>
-              {num}
-            </option>
-          ))}
-        </select>
+      <div className='tree-print'>
+        <ReactToPrint
+          trigger={() => {
+            return <button className='btn btn-outline-info'>Print</button>;
+          }}
+          content={() => componentRef.current}
+          documentTitle='results'
+        />
       </div>
 
-      <div>
-        <div>
-          <Link to='/tours/:id/allplayers'>Go Back</Link>
+      <div className='tree-page-header'>
+        <div className='tree-dropdown'>
+          <select
+            name='node-number'
+            id='node-number'
+            onChange={handleNodeDropdown}
+          >
+            <option value=''>Number of Players</option>
+            {playerNumber.map((num, index) => (
+              <option value={num} key={index}>
+                {num}
+              </option>
+            ))}
+          </select>
         </div>
-        <div>
-          <Link to='/api/main'>Home Page</Link>
+        <div className='tree-back'>
+          <button
+            className='btn btn-outline-secondary'
+            onClick={() => navigate('/tours/:id/allplayers')}
+          >
+            Back
+          </button>
+        </div>
+        <div className='tree-home'>
+          <button
+            className='btn btn-outline-primary'
+            onClick={() => navigate('/api/main')}
+          >
+            Home
+          </button>
         </div>
       </div>
       <div className='tree-playercards'>
@@ -371,9 +382,7 @@ const ResultTree = () => {
         >
           <Tree
             data={playersChart}
-            renderCustomNodeElement={(rd3tProps) =>
-              customNode({ ...rd3tProps })
-            }
+            renderCustomNodeElement={(props) => customNode({ ...props })}
             pathFunc='step'
             collapsible={true}
             zoomable={true}

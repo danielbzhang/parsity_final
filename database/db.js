@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
+const keys = require('../config/keys');
 
 const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
@@ -8,7 +9,7 @@ const MONGODB_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@parsityfinal.umjmo7w.
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGODB_URI, {
+    await mongoose.connect(keys.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

@@ -12,11 +12,11 @@ import {
   DELETE_TABLE_ROW,
 } from './type';
 
-const ROOT_URL = 'http://localhost:8000';
+// const ROOT_URL = 'http://localhost:8000'; ${ROOT_URL}
 
 export const handleLogin = (userData, callback) => (dispatch) => {
   axios
-    .post(`${ROOT_URL}/auth/login`, userData)
+    .post(`/auth/login`, userData)
     .then(function (response) {
       dispatch({ type: AUTH_USER, payload: response.data });
       localStorage.setItem('token', response.data.token);
@@ -29,7 +29,7 @@ export const handleLogin = (userData, callback) => (dispatch) => {
 
 export const handleRegister = (userData, callback) => (dispatch) => {
   axios
-    .post(`${ROOT_URL}/auth/register`, userData)
+    .post(`/auth/register`, userData)
     .then(function (response) {
       dispatch({ type: AUTH_USER, payload: response.data });
       localStorage.setItem('token', response.data.token);
@@ -55,7 +55,7 @@ export const addTournament = (tourData) => (dispatch) => {
     },
   };
   axios
-    .post(`${ROOT_URL}/api/tours`, tourData, config)
+    .post(`/api/tours`, tourData, config)
     .then(function (response) {
       dispatch({ type: ADD_TOURNAMENT, payload: response.data });
     })
@@ -71,7 +71,7 @@ export const getTournaments = () => (dispatch) => {
     },
   };
   axios
-    .get(`${ROOT_URL}/api/tours`, config)
+    .get(`/api/tours`, config)
     .then(function (response) {
       dispatch({ type: GET_TOURNAMENTS, payload: response.data });
     })
@@ -86,7 +86,7 @@ export const getTournament = (tourID) => (dispatch) => {
     },
   };
   axios
-    .get(`${ROOT_URL}/tours/${tourID}`, config)
+    .get(`/tours/${tourID}`, config)
     .then(function (response) {
       dispatch({ type: GET_TOURNAMENT, payload: response.data });
     })
@@ -94,10 +94,10 @@ export const getTournament = (tourID) => (dispatch) => {
       console.log('error in getTournament', error);
     });
 };
-
+// ++++++++++
 export const updateTournament = (tourID, tourData) => (dispatch) => {
   axios
-    .put(`${ROOT_URL}/tours/${tourID}`, tourData)
+    .put(`/tours/${tourID}`, tourData)
     .then(function (response) {
       dispatch({ type: UPDATE_TOURNAMENT, payload: response.data });
     })
@@ -107,7 +107,7 @@ export const updateTournament = (tourID, tourData) => (dispatch) => {
 };
 export const deleteTournament = (tourID) => (dispatch) => {
   axios
-    .delete(`${ROOT_URL}/tours/${tourID}`)
+    .delete(`/tours/${tourID}`)
     .then(function (response) {
       dispatch({ type: DELETE_TOURNAMENT, payload: response.data });
     })
@@ -118,7 +118,7 @@ export const deleteTournament = (tourID) => (dispatch) => {
 
 export const addPlayer = (playerData, tourID) => (dispatch) => {
   axios
-    .post(`${ROOT_URL}/tours/${tourID}/player`, playerData)
+    .post(`/tours/${tourID}/player`, playerData)
     .then(function (response) {
       dispatch({ type: ADD_PLAYER, payload: response.data });
     })
@@ -129,7 +129,7 @@ export const addPlayer = (playerData, tourID) => (dispatch) => {
 
 export const getPlayers = (tourID) => (dispatch) => {
   axios
-    .get(`${ROOT_URL}/tours/${tourID}/player`)
+    .get(`/tours/${tourID}/player`)
     .then(function (response) {
       dispatch({ type: GET_PLAYERS, payload: response.data });
       // callback();
@@ -141,7 +141,7 @@ export const getPlayers = (tourID) => (dispatch) => {
 
 export const deleteTableRow = (tourID, playerID) => (dispatch) => {
   axios
-    .delete(`${ROOT_URL}/tours/${tourID}/table/${playerID}`)
+    .delete(`/tours/${tourID}/table/${playerID}`)
     .then(function (response) {
       dispatch({ type: DELETE_TABLE_ROW, payload: response.data });
     })

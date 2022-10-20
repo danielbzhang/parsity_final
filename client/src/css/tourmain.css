@@ -60,22 +60,6 @@
   margin-top: 10%;
 }
 
-/* .node__root none {
-  fill: orange;
-}
-
-.node__branch circle {
-  fill: yellow;
-}
-
-.node__leaf circle {
-  fill: green;
-} */
-
-.node text {
-  font: 12px sans-serif;
-}
-
 .elemental-node {
   font-size: 15px;
   box-sizing: border-box;
@@ -94,8 +78,29 @@
   background-color: #ffcc99;
 }
 
-.link {
+.logout {
+  margin-top: 1%;
+  margin-left: 90%;
+}
+
+/* .node__root none {
+  fill: orange;
+}
+
+.node__branch circle {
+  fill: yellow;
+}
+
+.node__leaf circle {
+  fill: green;
+} */
+
+/* .node text {
+  font: 12px sans-serif;
+} */
+
+/* .link {
   fill: none;
   stroke: #ccc;
   stroke-width: 2px;
-}
+} */

@@ -15,9 +15,6 @@ const StripeMain = () => {
         <Elements stripe={stripePromise}>
           <StripeForm />
         </Elements>
-        {/* <div>
-          <Link to='/auth/login'>Back to Login Page</Link>
-        </div> */}
       </div>
     </>
   );

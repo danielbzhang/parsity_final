@@ -17,6 +17,7 @@ import PlayerList from './components/PlayerList';
 import AllPlayers from './components/AllPlayers';
 import StripeMain from './components/StripeMain';
 import ResultTree from './components/ResultTree';
+import NoPageView from './components/NoPageView';
 
 // const store = createStore(
 //   rootReducer,
@@ -37,6 +38,7 @@ root.render(
         <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
         {/* <Route exact path='/payment' element={<StripeMain />} /> */}
         <Route exact path='/tours/:id/result' element={<ResultTree />} />
+        <Route path='*' element={<NoPageView />} />
       </Routes>
     </BrowserRouter>
   </Provider>

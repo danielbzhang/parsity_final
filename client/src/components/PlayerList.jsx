@@ -15,6 +15,9 @@ const PlayerList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  const authenticated = useSelector(
+    (state) => state.rootReducer.auth.authenticated
+  );
 
   const tourId = useSelector((state) => state.rootReducer.tourOne._id);
 
@@ -27,98 +30,108 @@ const PlayerList = () => {
     document.getElementById('playerlist-form').reset();
   };
 
-  return (
-    <>
-      <div>
-        <Nav />
-      </div>
-      <div className='player-list-form'>
-        <form
-          className='playerlist'
-          id='playerlist-form'
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <FloatingLabel
-            controlId='floatingFirstname'
-            label='First Name:'
-            className='mb-2'
+  if (authenticated) {
+    return (
+      <>
+        <div className='logout'>
+          <Nav />
+        </div>
+        <div className='player-list-form'>
+          <form
+            className='playerlist'
+            id='playerlist-form'
+            onSubmit={handleSubmit(onSubmit)}
           >
-            <Form.Control
-              type='text'
-              name='firstname'
-              placeholder='OSU'
-              {...register('firstname')}
-            />
-          </FloatingLabel>
-          <FloatingLabel
-            controlId='floatingLastname'
-            label='Last Name:'
-            className='mb-2'
-          >
-            <Form.Control
-              type='text'
-              name='lastname'
-              placeholder='OSU'
-              {...register('lastname')}
-            />
-          </FloatingLabel>
-          <FloatingLabel controlId='floatingSelect' label='Select a Gender'>
-            <Form.Select
-              aria-label='Floating label select example'
-              name='sex'
-              {...register('sex')}
+            <FloatingLabel
+              controlId='floatingFirstname'
+              label='First Name:'
+              className='mb-2'
             >
-              <option value='m'>Male</option>
-              <option value='f'>Female</option>
-            </Form.Select>
-          </FloatingLabel>
-          <FloatingLabel
-            controlId='floatingPhone'
-            label='Phone Number:'
-            className='mb-2'
-          >
-            <Form.Control
-              type='text'
-              name='phone'
-              placeholder='OSU'
-              {...register('phone')}
-            />
-          </FloatingLabel>
-          <FloatingLabel
-            controlId='floatingEmail'
-            label='Email Address:'
-            className='mb-2'
-          >
-            <Form.Control
-              type='text'
-              name='email'
-              placeholder='OSU'
-              {...register('email')}
-            />
-          </FloatingLabel>
+              <Form.Control
+                type='text'
+                name='firstname'
+                placeholder='OSU'
+                {...register('firstname')}
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId='floatingLastname'
+              label='Last Name:'
+              className='mb-2'
+            >
+              <Form.Control
+                type='text'
+                name='lastname'
+                placeholder='OSU'
+                {...register('lastname')}
+              />
+            </FloatingLabel>
+            <FloatingLabel controlId='floatingSelect' label='Select a Gender'>
+              <Form.Select
+                aria-label='Floating label select example'
+                name='sex'
+                {...register('sex')}
+              >
+                <option value='m'>Male</option>
+                <option value='f'>Female</option>
+              </Form.Select>
+            </FloatingLabel>
+            <FloatingLabel
+              controlId='floatingPhone'
+              label='Phone Number:'
+              className='mb-2'
+            >
+              <Form.Control
+                type='text'
+                name='phone'
+                placeholder='OSU'
+                {...register('phone')}
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId='floatingEmail'
+              label='Email Address:'
+              className='mb-2'
+            >
+              <Form.Control
+                type='text'
+                name='email'
+                placeholder='OSU'
+                {...register('email')}
+              />
+            </FloatingLabel>
 
-          <button
-            className='btn btn-outline-primary player-form-add-btn'
-            type='submit'
-          >
-            Add Player
-          </button>
-        </form>
-        <div className='player-list-link'>
-          <Link to='/tours/:id/allplayers' onClick={() => getPlayers(tourId)}>
-            All Players List
-          </Link>
-        </div>
-        <div className='player-form-back-clear'>
-          <Link to='/api/main'>Back</Link>
+            <button
+              className='btn btn-outline-primary player-form-add-btn'
+              type='submit'
+            >
+              Add Player
+            </button>
+          </form>
+          <div className='player-list-link'>
+            <Link to='/tours/:id/allplayers' onClick={() => getPlayers(tourId)}>
+              All Players List
+            </Link>
+          </div>
+          <div className='player-form-back-clear'>
+            <Link to='/api/main'>Back</Link>
 
-          <a className='clear-btn' onClick={() => clearForm()}>
-            Clear
-          </a>
+            <a className='clear-btn' onClick={() => clearForm()}>
+              Clear
+            </a>
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>Please Login First!</h1>
+
+        <Link to='/auth/login'>Go to Login Page</Link>
+      </>
+    );
+  }
 };
 
 export default PlayerList;

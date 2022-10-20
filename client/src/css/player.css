@@ -35,8 +35,18 @@
   padding-right: 10px;
 }
 
-.table-print {
-  margin-left: 95%;
+.tree-print {
+  margin-left: 90%;
+  margin-top: 1%;
+}
+
+.tree-dropdown {
+  margin-left: 5%;
+}
+
+.tree-back,
+.tree-home {
+  margin-left: 2%;
 }
 
 .player-list-btn {
@@ -44,17 +54,14 @@
   margin-left: 40%;
 }
 
-.player-list-back {
-  margin-right: 10px;
-}
-.player-list-schedule {
-  margin-right: 10px;
-}
+.player-list-back,
+.player-list-schedule,
 .player-home-page {
   margin-right: 10px;
 }
 
-.tree-playercards {
+.tree-playercards,
+.tree-page-header {
   display: flex;
 }
 
@@ -64,7 +71,7 @@
 
 .playercards-list {
   /* border: 1px solid; */
-  border: dashed rgb(242, 194, 194);
+  border: dashed rgb(76, 56, 56);
   background: rgb(190, 190, 245);
   list-style-type: none;
   margin-top: 10px;
@@ -73,7 +80,7 @@
 }
 
 .playercards-list:nth-child(odd) {
-  background: rgb(173, 244, 181);
+  background: rgb(132, 196, 236);
 }
 
 .playercards-ul {

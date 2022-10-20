@@ -14,7 +14,9 @@ const TournamentMain = () => {
   if (authenticated) {
     return (
       <>
-        <Nav />
+        <div className='logout'>
+          <Nav />
+        </div>
         <div className='main-page'>
           <div className='tour-form-style'>
             <TourForm />

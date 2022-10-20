@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React from 'react';
 import AllPlayers from './AllPlayers';
 import {
   useTable,
@@ -30,7 +30,7 @@ const ReactTable = ({ columns, data }) => {
 
   return (
     <>
-      <span>
+      <span className='search-table'>
         Search:{' '}
         <input
           value={globalFilter || ''}
@@ -39,10 +39,13 @@ const ReactTable = ({ columns, data }) => {
       </span>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderProps}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+          {headerGroups.map((headerGroup, index) => (
+            <tr {...headerGroup.getHeaderProps} key={index}>
+              {headerGroup.headers.map((column, i) => (
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  key={i}
+                >
                   {column.render('Header')}
                   <span>
                     {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
@@ -57,30 +60,21 @@ const ReactTable = ({ columns, data }) => {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+              <tr {...row.getRowProps()} key={i}>
+                {row.cells.map((cell, index) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    <td {...cell.getCellProps()} key={index}>
+                      {cell.render('Cell')}
+                    </td>
                   );
                 })}
               </tr>
             );
           })}
         </tbody>
-        {/* <tfoot>
-          {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps()}>
-              {footerGroup.headers.map((col) => (
-                <td {...col.getFooterProps}>{col.render('Footer')}</td>
-              ))}
-            </tr>
-          ))}
-        </tfoot> */}
       </table>
-      <div>
-        <div>
-          Page {pageIndex + 1} of {pageOptions.length}{' '}
-        </div>
+      <div className='pagination-table'>
+        Page {pageIndex + 1} of {pageOptions.length} {' '}
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           Previous
         </button>

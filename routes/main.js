@@ -40,6 +40,7 @@ router.get('/tours/:id', requireAuth, async (req, res) => {
     return res.status(500).json(err.message);
   }
 });
+// +++++++++++
 
 router.put('/tours/:id', async (req, res) => {
   try {
