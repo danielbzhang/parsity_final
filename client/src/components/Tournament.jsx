@@ -52,7 +52,8 @@ const Tournament = ({ tour }) => {
         </form>
 
         <span className='edit-icon' onClick={handleShowTrash}>
-          <i className='fas fa-trash' />
+          {/* <i className='fas fa-trash' /> */}
+          del
         </span>
 
         <Modal show={showTrash} onHide={handleCloseTrash}>
@@ -73,11 +74,13 @@ const Tournament = ({ tour }) => {
           className='edit-icon'
           onClick={() => setEdit((prevState) => !prevState)}
         >
-          <i className='fas fa-pen' />
+          {/* <i className='fas fa-pen' /> */}
+          edit
         </span>
 
         <span className='edit-icon' onClick={handleShowInfo}>
-          <i className='fas fa-info' />
+          {/* <i className='fas fa-info' /> */}
+          info
         </span>
 
         <Modal show={showInfo} onHide={handleCloseInfo}>
