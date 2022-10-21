@@ -1,9 +1,10 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Table from 'react-bootstrap/Table';
+// import Table from 'react-bootstrap/Table';
 import ReactTable from './ReactTable';
 import { Link, useNavigate } from 'react-router-dom';
-import printJS from 'print-js';
+import { FiTrash2 } from 'react-icons/fi';
+// import printJS from 'print-js';
 // import { Table, Button } from 'react-bootstrap';
 import Nav from './Nav';
 import { getPlayers, deleteTableRow } from '../actions';
@@ -93,7 +94,7 @@ const AllPlayers = () => {
               handleDeleteTableRow(tourId, tableProps.row.original._id)
             }
           >
-            delete
+            <FiTrash2 />
           </span>
         ),
       },

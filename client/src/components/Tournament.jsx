@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { FiTrash2, FiAlertCircle, FiEdit } from 'react-icons/fi';
 
 import { updateTournament, deleteTournament, getTournament } from '../actions';
 
@@ -52,8 +53,7 @@ const Tournament = ({ tour }) => {
         </form>
 
         <span className='edit-icon' onClick={handleShowTrash}>
-          {/* <i className='fas fa-trash' /> */}
-          del
+          <FiTrash2 />
         </span>
 
         <Modal show={showTrash} onHide={handleCloseTrash}>
@@ -74,13 +74,11 @@ const Tournament = ({ tour }) => {
           className='edit-icon'
           onClick={() => setEdit((prevState) => !prevState)}
         >
-          {/* <i className='fas fa-pen' /> */}
-          edit
+          <FiEdit />
         </span>
 
         <span className='edit-icon' onClick={handleShowInfo}>
-          {/* <i className='fas fa-info' /> */}
-          info
+          <FiAlertCircle />
         </span>
 
         <Modal show={showInfo} onHide={handleCloseInfo}>
