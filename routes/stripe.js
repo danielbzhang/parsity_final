@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
+const keys = require('../config/keys');
+// const stripe = require('stripe')(process.env.STRIPE_SECRET);
+const stripe = require('stripe')(keys.STRIPE_SECRET);
 
 router.post('/payment', async (req, res) => {
   const { amount, id } = req.body;
