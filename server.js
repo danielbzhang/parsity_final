@@ -9,11 +9,12 @@ const stripeRouter = require('./routes/stripe');
 
 const app = express();
 
+// connect to the database
+connectDB();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-
-connectDB();
 
 app.use('/', tourRouter);
 app.use('/', stripeRouter);
