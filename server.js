@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
+connectDB();
+
 app.use('/', tourRouter);
 app.use('/', stripeRouter);
 
@@ -32,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = process.env.PORT || 8000;
-connectDB();
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
