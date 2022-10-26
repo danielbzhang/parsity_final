@@ -21,13 +21,19 @@
   font-size: 1.5em;
   list-style-type: none;
   border: 1px solid #000;
+  border-radius: 5px;
   padding: 20px;
-  background: rgb(186, 229, 186);
+  background: rgb(247, 180, 57);
   height: 60px;
-  /* position: relative; */
 }
 .tour-list-li:nth-child(odd) {
-  background: rgb(239, 195, 195);
+  background: rgb(244, 216, 165);
+}
+
+.tour-list-li:hover,
+.tour-list-li:focus {
+  box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(33, 33, 33, 2.5);
+  transform: translateY(-0.25em);
 }
 
 .tour-form-style {
@@ -82,25 +88,3 @@
   margin-top: 1%;
   margin-left: 90%;
 }
-
-/* .node__root none {
-  fill: orange;
-}
-
-.node__branch circle {
-  fill: yellow;
-}
-
-.node__leaf circle {
-  fill: green;
-} */
-
-/* .node text {
-  font: 12px sans-serif;
-} */
-
-/* .link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
-} */

@@ -15,7 +15,7 @@ import Register from './components/Register';
 import TournamentMain from './components/TournamentMain';
 import PlayerList from './components/PlayerList';
 import AllPlayers from './components/AllPlayers';
-import StripeMain from './components/StripeMain';
+// import StripeMain from './components/StripeMain';
 import ResultTree from './components/ResultTree';
 import NoPageView from './components/NoPageView';
 
@@ -36,7 +36,6 @@ root.render(
         <Route exact path='/api/main' element={<TournamentMain />} />
         <Route exact path='/tours/:id/players' element={<PlayerList />} />
         <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
-        {/* <Route exact path='/payment' element={<StripeMain />} /> */}
         <Route exact path='/tours/:id/result' element={<ResultTree />} />
         <Route path='*' element={<NoPageView />} />
       </Routes>

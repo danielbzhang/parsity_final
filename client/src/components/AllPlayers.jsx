@@ -4,9 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactTable from './ReactTable';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 // import printJS from 'print-js';
 // import { Table, Button } from 'react-bootstrap';
-import Nav from './Nav';
+import Logout from './Logout';
 import { getPlayers, deleteTableRow } from '../actions';
 
 const AllPlayers = () => {
@@ -35,7 +38,7 @@ const AllPlayers = () => {
     () => [
       {
         Header: 'First Name',
-        Footer: 'First Name',
+        // Footer: 'First Name',
         accessor: 'firstname',
         Cell: ({ value }) => {
           return capFirstLetter(value);
@@ -43,7 +46,7 @@ const AllPlayers = () => {
       },
       {
         Header: 'Last Name',
-        Footer: 'Last Name',
+        // Footer: 'Last Name',
         accessor: 'lastname',
         Cell: ({ value }) => {
           return capFirstLetter(value);
@@ -51,7 +54,7 @@ const AllPlayers = () => {
       },
       {
         Header: 'Gender',
-        Footer: 'Gender',
+        // Footer: 'Gender',
         accessor: 'sex',
         Cell: ({ value }) => {
           return value.toUpperCase();
@@ -59,7 +62,7 @@ const AllPlayers = () => {
       },
       {
         Header: 'Phone Number',
-        Footer: 'Phone Number',
+        // Footer: 'Phone Number',
         accessor: 'phone',
         Cell: ({ value }) => {
           return (
@@ -75,7 +78,7 @@ const AllPlayers = () => {
       },
       {
         Header: 'Email Address',
-        Footer: 'Email Address',
+        // Footer: 'Email Address',
         accessor: 'email',
       },
       {
@@ -88,7 +91,7 @@ const AllPlayers = () => {
             style={{
               cursor: 'pointer',
               color: 'red',
-              textDecoration: 'underline',
+              // textDecoration: 'underline',
             }}
             onClick={() =>
               handleDeleteTableRow(tourId, tableProps.row.original._id)
@@ -104,10 +107,10 @@ const AllPlayers = () => {
   return (
     <>
       <div className='player-home-page'>
-        <div className='logout'>
-          <Nav />
-        </div>
-        <div className='player-list-btn'>
+        {/* <div className='logout'>
+          <Logout />
+        </div> */}
+        {/* <div className='player-list-btn'>
           <div className='player-list-back'>
             <button
               className='btn btn-secondary'
@@ -134,7 +137,21 @@ const AllPlayers = () => {
               Home
             </button>
           </div>
-        </div>
+        </div> */}
+        <Navbar bg='light' variant='light'>
+          <Container>
+            <Nav className='me-auto'>
+              <Nav.Link onClick={() => navigate('/api/main')}>Home</Nav.Link>
+              <Nav.Link onClick={() => navigate('/tours/:id/result')}>
+                Schedule
+              </Nav.Link>
+              <Nav.Link onClick={() => navigate('/tours/:id/players')}>
+                Back
+              </Nav.Link>
+            </Nav>
+            <Logout />
+          </Container>
+        </Navbar>
       </div>
       <div>
         <ReactTable columns={columns} data={allPlayers} />

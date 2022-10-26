@@ -34,6 +34,13 @@ const Login = () => {
 
   return (
     <>
+      <div className='login-title'>
+        <h3 className='title'><span className='osu'>B</span>rackets</h3>
+        <h6 className='subtitle'>
+          Designed for <span className='osu'>Oregon State University</span>{' '}
+          Badminton Club
+        </h6>
+      </div>
       <div className='login-form'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form-group'>

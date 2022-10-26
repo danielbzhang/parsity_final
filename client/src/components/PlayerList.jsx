@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../css/player.css';
 
-import Nav from './Nav';
+import Logout from './Logout';
 
 import { addPlayer } from '../actions';
 import { getPlayers } from '../actions';
@@ -34,7 +34,7 @@ const PlayerList = () => {
     return (
       <>
         <div className='logout'>
-          <Nav />
+          <Logout />
         </div>
         <div className='player-list-form'>
           <form

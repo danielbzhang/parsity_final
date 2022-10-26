@@ -1,4 +1,4 @@
-import Nav from './Nav';
+import Logout from './Logout';
 import TourForm from './TourForm';
 import TouramentList from './TouramentList';
 import '../css/tourmain.css';
@@ -15,7 +15,7 @@ const TournamentMain = () => {
     return (
       <>
         <div className='logout'>
-          <Nav />
+          <Logout />
         </div>
         <div className='main-page'>
           <div className='tour-form-style'>

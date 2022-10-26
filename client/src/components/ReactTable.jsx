@@ -30,13 +30,13 @@ const ReactTable = ({ columns, data }) => {
 
   return (
     <>
-      <span className='search-table'>
+      <div className='search-table'>
         Search:{' '}
         <input
           value={globalFilter || ''}
           onChange={(e) => setGlobalFilter(e.target.value)}
         />
-      </span>
+      </div>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup, index) => (
@@ -74,7 +74,7 @@ const ReactTable = ({ columns, data }) => {
         </tbody>
       </table>
       <div className='pagination-table'>
-        Page {pageIndex + 1} of {pageOptions.length} {' '}
+        Page {pageIndex + 1} of {pageOptions.length}{' '}
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           Previous
         </button>

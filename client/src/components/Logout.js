@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 // Logout Button
-const Nav = () => {
+const Logout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -50,4 +50,4 @@ const LogoutBtn = styled.div`
   color: palevioletred;
 `;
 
-export default Nav;
+export default Logout;

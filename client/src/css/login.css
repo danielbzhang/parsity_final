@@ -1,10 +1,6 @@
 body {
-  /* background-image: url(''); */
-  /* background-size: cover; */
-  /* height: 500px; */
-  /* background-position: center;
-  background-repeat: no-repeat; */
-  background-color: #c5e6f2;
+  /* background-color: #c5e6f2; */
+  background-color: rgb(214, 214, 251);
 }
 
 .login-label-btn {
@@ -48,11 +44,26 @@ body {
 .login-form {
   margin-top: 5%;
   margin-bottom: 0;
-  margin-left: 20%;
-  margin-right: 30%;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: inherit;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+}
+
+.login-title {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.subtitle {
+  margin-top: 2%;
+  background-color: transparent;
+}
+
+.osu {
+  color: rgb(209, 142, 18);
 }

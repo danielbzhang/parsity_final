@@ -333,6 +333,14 @@ const ResultTree = () => {
   return (
     <>
       <div className='tree-print'>
+        <div className='tree-back'>
+          <button
+            className='btn btn-outline-secondary'
+            onClick={() => navigate('/tours/:id/allplayers')}
+          >
+            Back
+          </button>
+        </div>
         <ReactToPrint
           trigger={() => {
             return <button className='btn btn-outline-info'>Print</button>;
@@ -357,7 +365,7 @@ const ResultTree = () => {
             ))}
           </select>
         </div>
-        <div className='tree-back'>
+        {/* <div className='tree-back'>
           <button
             className='btn btn-outline-secondary'
             onClick={() => navigate('/tours/:id/allplayers')}
@@ -372,7 +380,7 @@ const ResultTree = () => {
           >
             Home
           </button>
-        </div>
+        </div> */}
       </div>
       <div className='tree-playercards'>
         <div
