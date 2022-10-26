@@ -7,7 +7,7 @@ import '../css/stripeform.css';
 const cardStyling = {
   style: {
     base: {
-      iconColor: '#000080',
+      iconColor: 'black',
       color: '#000080',
       fontWeight: 500,
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',

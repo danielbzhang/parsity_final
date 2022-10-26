@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,6 +15,10 @@ const userSchema = Yup.object().shape({
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const authenticated = useSelector(
+    (state) => state.rootReducer.auth.errorMessage
+  );
 
   const {
     register,
@@ -74,6 +78,11 @@ const Login = () => {
           <button className='btn btn-primary login-label-btn' type='submit'>
             Login
           </button>
+          <div style={{ color: 'red' }}>
+            {authenticated
+              ? 'Log in failed. Please check your username or password'
+              : ''}
+          </div>
         </form>
         <div>
           <Link to='/auth/register'>Create an account / Accept a donation</Link>
