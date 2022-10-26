@@ -38,7 +38,6 @@ const AllPlayers = () => {
     () => [
       {
         Header: 'First Name',
-        // Footer: 'First Name',
         accessor: 'firstname',
         Cell: ({ value }) => {
           return capFirstLetter(value);
@@ -46,7 +45,6 @@ const AllPlayers = () => {
       },
       {
         Header: 'Last Name',
-        // Footer: 'Last Name',
         accessor: 'lastname',
         Cell: ({ value }) => {
           return capFirstLetter(value);
@@ -54,7 +52,6 @@ const AllPlayers = () => {
       },
       {
         Header: 'Gender',
-        // Footer: 'Gender',
         accessor: 'sex',
         Cell: ({ value }) => {
           return value.toUpperCase();
@@ -62,7 +59,6 @@ const AllPlayers = () => {
       },
       {
         Header: 'Phone Number',
-        // Footer: 'Phone Number',
         accessor: 'phone',
         Cell: ({ value }) => {
           return (
@@ -78,7 +74,6 @@ const AllPlayers = () => {
       },
       {
         Header: 'Email Address',
-        // Footer: 'Email Address',
         accessor: 'email',
       },
       {
@@ -91,7 +86,6 @@ const AllPlayers = () => {
             style={{
               cursor: 'pointer',
               color: 'red',
-              // textDecoration: 'underline',
             }}
             onClick={() =>
               handleDeleteTableRow(tourId, tableProps.row.original._id)
@@ -107,37 +101,6 @@ const AllPlayers = () => {
   return (
     <>
       <div className='player-home-page'>
-        {/* <div className='logout'>
-          <Logout />
-        </div> */}
-        {/* <div className='player-list-btn'>
-          <div className='player-list-back'>
-            <button
-              className='btn btn-secondary'
-              onClick={() => navigate('/tours/:id/players')}
-            >
-              Back
-            </button>
-          </div>
-
-          <div className='player-list-schedule'>
-            <button
-              className='btn btn-info'
-              onClick={() => navigate('/tours/:id/result')}
-            >
-              Schedule
-            </button>
-          </div>
-
-          <div className='player-home-page'>
-            <button
-              className='btn btn-primary'
-              onClick={() => navigate('/api/main')}
-            >
-              Home
-            </button>
-          </div>
-        </div> */}
         <Navbar bg='light' variant='light'>
           <Container>
             <Nav className='me-auto'>

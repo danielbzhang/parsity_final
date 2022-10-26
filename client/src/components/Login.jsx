@@ -35,7 +35,9 @@ const Login = () => {
   return (
     <>
       <div className='login-title'>
-        <h3 className='title'><span className='osu'>B</span>rackets</h3>
+        <h3 className='title'>
+          <span className='osu'>B</span>rackets
+        </h3>
         <h6 className='subtitle'>
           Designed for <span className='osu'>Oregon State University</span>{' '}
           Badminton Club
@@ -76,7 +78,6 @@ const Login = () => {
         <div>
           <Link to='/auth/register'>Create an account / Accept a donation</Link>
         </div>
-        <div>{/* <Link to='/payment'>Donate to our club!</Link> */}</div>
       </div>
     </>
   );

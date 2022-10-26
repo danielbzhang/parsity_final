@@ -365,22 +365,6 @@ const ResultTree = () => {
             ))}
           </select>
         </div>
-        {/* <div className='tree-back'>
-          <button
-            className='btn btn-outline-secondary'
-            onClick={() => navigate('/tours/:id/allplayers')}
-          >
-            Back
-          </button>
-        </div>
-        <div className='tree-home'>
-          <button
-            className='btn btn-outline-primary'
-            onClick={() => navigate('/api/main')}
-          >
-            Home
-          </button>
-        </div> */}
       </div>
       <div className='tree-playercards'>
         <div

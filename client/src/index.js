@@ -15,7 +15,6 @@ import Register from './components/Register';
 import TournamentMain from './components/TournamentMain';
 import PlayerList from './components/PlayerList';
 import AllPlayers from './components/AllPlayers';
-// import StripeMain from './components/StripeMain';
 import ResultTree from './components/ResultTree';
 import NoPageView from './components/NoPageView';
 

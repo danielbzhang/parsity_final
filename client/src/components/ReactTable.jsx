@@ -1,5 +1,4 @@
 import React from 'react';
-import AllPlayers from './AllPlayers';
 import {
   useTable,
   useSortBy,
