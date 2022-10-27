@@ -17,6 +17,7 @@ import PlayerList from './components/PlayerList';
 import AllPlayers from './components/AllPlayers';
 import ResultTree from './components/ResultTree';
 import NoPageView from './components/NoPageView';
+import Chart from './components/Chart';
 
 // const store = createStore(
 //   rootReducer,
@@ -35,6 +36,7 @@ root.render(
         <Route exact path='/api/main' element={<TournamentMain />} />
         <Route exact path='/tours/:id/players' element={<PlayerList />} />
         <Route exact path='/tours/:id/allplayers' element={<AllPlayers />} />
+        <Route exact path='/tours/:id/allplayers/data' element={<Chart />} />
         <Route exact path='/tours/:id/result' element={<ResultTree />} />
         <Route path='*' element={<NoPageView />} />
       </Routes>

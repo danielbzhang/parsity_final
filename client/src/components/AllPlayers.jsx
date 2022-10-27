@@ -105,6 +105,9 @@ const AllPlayers = () => {
           <Container>
             <Nav className='me-auto'>
               <Nav.Link onClick={() => navigate('/api/main')}>Home</Nav.Link>
+              <Nav.Link onClick={() => navigate('/tours/:id/allplayers/data')}>
+                Data
+              </Nav.Link>
               <Nav.Link onClick={() => navigate('/tours/:id/result')}>
                 Schedule
               </Nav.Link>

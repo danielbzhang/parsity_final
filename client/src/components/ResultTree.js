@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Tree from 'react-d3-tree';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 
 import PlayerCards from './PlayerCards';
