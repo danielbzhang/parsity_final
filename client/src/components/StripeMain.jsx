@@ -2,10 +2,8 @@ import React from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import StripeForm from './StripeForm';
-// require('dotenv').config();
 
-const PUBLIC_KEY =
-  'pk_test_51LrXV7GYfyzkTIYrVK2DafROIkKyH9org6xikSCYS1DvyNIKfL0rq1Oshv3WL8EsfAA51Njl8aQeSCMcv92Zjzy700tC84MKAX';
+const PUBLIC_KEY = `${process.env.REACT_APP_STRIPE_PUBLIC}`;
 const stripePromise = loadStripe(PUBLIC_KEY);
 
 const StripeMain = () => {

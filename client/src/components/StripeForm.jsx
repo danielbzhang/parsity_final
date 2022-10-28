@@ -13,7 +13,7 @@ const cardStyling = {
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
-      ':-webkit-autofill': { color: '#fce883' },
+      ':-webkit-autofill': { color: 'black' },
       '::placeholder': { color: '#000080' },
     },
     invalid: {
