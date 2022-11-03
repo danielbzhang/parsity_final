@@ -19,7 +19,7 @@ const TourForm = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect called in TourForm');
+    // console.log('useEffect called in TourForm');
     dispatch(getTournaments());
   }, [isSubmmited]);
 

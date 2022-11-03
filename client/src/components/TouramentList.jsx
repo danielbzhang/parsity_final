@@ -17,7 +17,7 @@ const TouramentList = () => {
   const tours = useSelector((state) => state.rootReducer.tour.tours) || [];
   // let tours = useSelector((state) => state.rootReducer.tour.tours);
   // const tours = tours1 ? tours2 : [];
-  console.log('tours::', tours);
+  // console.log('tours::', tours);
 
   const toursCount =
     useSelector((state) => state.rootReducer.tour.toursCount) || 8;
