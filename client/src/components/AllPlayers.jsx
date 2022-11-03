@@ -128,7 +128,7 @@ const AllPlayers = () => {
 
 export default AllPlayers;
 
-// ++++++++++++++++++++++++++++Conventional Table Below+++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++Bootstrap Table Below+++++++++++++++++++++++++
 // const renderPlayers = () => {
 //   return allPlayers.map((player) => {
 //     return (

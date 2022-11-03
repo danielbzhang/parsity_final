@@ -55,7 +55,6 @@ router.get('/tours/:id', requireAuth, async (req, res) => {
 
 router.put('/tours/:id', async (req, res) => {
   try {
-    // console.log('tours put::', req.body);
     const id = req.params.id;
     // const { title, hostDate, hostLocation } = req.body;
     // const update = { title, hostDate, hostLocation };
