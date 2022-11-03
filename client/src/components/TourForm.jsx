@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -9,17 +9,19 @@ import { addTournament, getTournaments } from '../actions';
 const TourForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // console.log('useEffect called in TourForm');
-    dispatch(getTournaments());
-  }, []);
+  const [isSubmmited, setIsSubmitted] = useState(false);
 
   const onSubmit = (data) => {
+    // console.log('onSubmit fired');
     dispatch(addTournament(data));
-    dispatch(getTournaments());
-    // window.location.reload();
+    setIsSubmitted((current) => !current);
+    // dispatch(getTournaments());
   };
+
+  useEffect(() => {
+    console.log('useEffect called in TourForm');
+    dispatch(getTournaments());
+  }, [isSubmmited]);
 
   return (
     <>

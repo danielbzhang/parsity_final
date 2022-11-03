@@ -17,7 +17,8 @@ router.post('/api/tours', requireAuth, async (req, res) => {
       createdAt: Date.now(),
     });
     await newTour.save();
-    return res.status(200).json(newTour);
+    // return res.status(200).json(newTour);
+    return res.status(200);
   } catch (err) {
     return res.status(500).json(err.message);
   }
@@ -64,6 +65,7 @@ router.put('/tours/:id', async (req, res) => {
       new: true,
     });
     return res.status(200).json(updatedTour);
+    // return res.status(200);
   } catch (err) {
     return res.status(500).json(err.message);
   }
@@ -74,7 +76,8 @@ router.delete('/tours/:id', async (req, res) => {
     const id = req.params.id;
     const tour = await Tournament.findByIdAndDelete(id);
 
-    return res.status(200).json(tour);
+    // return res.status(200).json(tour);
+    return res.status(200);
   } catch (err) {
     return res.status(500).json(err.message);
   }

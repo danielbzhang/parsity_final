@@ -16,7 +16,7 @@ const PaginationTour = ({ toursCount }) => {
 
   useEffect(() => {
     displayPage(currentPage);
-    // console.log('useEffect called in PaginationTour');
+    console.log('useEffect called in PaginationTour');
   }, [currentPage]);
 
   const displayPagePrev = () => {

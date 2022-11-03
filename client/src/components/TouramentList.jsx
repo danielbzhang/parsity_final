@@ -8,12 +8,16 @@ import PaginationTour from './PaginationTour';
 const TouramentList = () => {
   const dispatch = useDispatch();
 
-  const tours = useSelector((state) => state.rootReducer.tour.tours) || [];
-  // console.log('tours::', tours);
   // useEffect(() => {
   //   console.log('useEffect called in TouramentList');
   //   dispatch(getTournaments());
-  // },[]);
+  // }, []);
+
+  // const tours1 = useSelector((state) => state.rootReducer.tour);
+  const tours = useSelector((state) => state.rootReducer.tour.tours) || [];
+  // let tours = useSelector((state) => state.rootReducer.tour.tours);
+  // const tours = tours1 ? tours2 : [];
+  console.log('tours::', tours);
 
   const toursCount =
     useSelector((state) => state.rootReducer.tour.toursCount) || 8;
