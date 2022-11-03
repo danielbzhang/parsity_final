@@ -1,16 +1,22 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getTournaments } from '../actions';
 import Tournament from './Tournament';
+import PaginationTour from './PaginationTour';
 
 const TouramentList = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTournaments());
-  }, []);
 
-  const tours = useSelector((state) => state.rootReducer.tour);
+  const tours = useSelector((state) => state.rootReducer.tour.tours) || [];
+  // console.log('tours::', tours);
+  // useEffect(() => {
+  //   console.log('useEffect called in TouramentList');
+  //   dispatch(getTournaments());
+  // },[]);
+
+  const toursCount =
+    useSelector((state) => state.rootReducer.tour.toursCount) || 8;
 
   return (
     <>
@@ -20,6 +26,9 @@ const TouramentList = () => {
             <Tournament key={tour._id} tour={tour} />
           ))}
         </ul>
+      </div>
+      <div className='tour-list-pagination'>
+        <PaginationTour toursCount={toursCount} />
       </div>
     </>
   );

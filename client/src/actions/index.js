@@ -64,14 +64,15 @@ export const addTournament = (tourData) => (dispatch) => {
     });
 };
 
-export const getTournaments = () => (dispatch) => {
+export const getTournaments = (pgNumber) => (dispatch) => {
   const config = {
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     },
   };
   axios
-    .get(`/api/tours`, config)
+    .get(`/api/tours?page=${pgNumber}`, config)
+    // .get(`/api/tours`, config)
     .then(function (response) {
       dispatch({ type: GET_TOURNAMENTS, payload: response.data });
     })

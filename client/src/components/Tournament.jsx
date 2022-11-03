@@ -1,14 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FiTrash2, FiAlertCircle, FiEdit } from 'react-icons/fi';
 
 import { updateTournament, deleteTournament, getTournament } from '../actions';
+import { getTournaments } from '../actions';
 
 const Tournament = ({ tour }) => {
   const dispatch = useDispatch();
+
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(tour?.title);
   const [date, setDate] = useState(tour?.hostDate);
@@ -29,6 +31,7 @@ const Tournament = ({ tour }) => {
     setEdit((prevState) => !prevState);
 
     dispatch(updateTournament(tour._id, tourData));
+    dispatch(getTournaments());
   };
 
   return (
@@ -64,7 +67,10 @@ const Tournament = ({ tour }) => {
             </Button>
             <Button
               variant='outline-danger'
-              onClick={() => dispatch(deleteTournament(tour._id))}
+              onClick={() => {
+                dispatch(deleteTournament(tour._id));
+                dispatch(getTournaments());
+              }}
             >
               Yes
             </Button>

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
-import { addTournament } from '../actions';
+import { addTournament, getTournaments } from '../actions';
 
 const TourForm = () => {
   const { register, handleSubmit } = useForm();
@@ -12,6 +12,7 @@ const TourForm = () => {
 
   const onSubmit = (data) => {
     dispatch(addTournament(data));
+    dispatch(getTournaments());
   };
 
   return (
