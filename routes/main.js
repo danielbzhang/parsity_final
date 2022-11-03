@@ -23,12 +23,12 @@ router.post('/api/tours', requireAuth, async (req, res) => {
   }
 });
 
-router.get('/api/tours', requireAuth, async (req, res, next) => {
+router.get('/api/tours', requireAuth, (req, res, next) => {
   try {
     const perPage = 9;
     const page = req.query.page || 1;
 
-    await Tournament.find({})
+    Tournament.find({})
       .skip(perPage * page - perPage)
       .limit(perPage)
       .sort({ createdAt: 'desc' })
