@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -10,10 +10,15 @@ const TourForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    // console.log('useEffect called in TourForm');
+    dispatch(getTournaments());
+  }, []);
+
   const onSubmit = (data) => {
     dispatch(addTournament(data));
-    // dispatch(getTournaments());
-    window.location.reload();
+    dispatch(getTournaments());
+    // window.location.reload();
   };
 
   return (
