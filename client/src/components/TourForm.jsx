@@ -12,7 +12,8 @@ const TourForm = () => {
 
   const onSubmit = (data) => {
     dispatch(addTournament(data));
-    dispatch(getTournaments());
+    // dispatch(getTournaments());
+    window.location.reload();
   };
 
   return (
