@@ -31,7 +31,7 @@ const Tournament = ({ tour }) => {
     setEdit((prevState) => !prevState);
 
     dispatch(updateTournament(tour._id, tourData));
-    dispatch(getTournaments());
+    // dispatch(getTournaments());
   };
 
   return (

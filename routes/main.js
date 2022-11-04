@@ -43,6 +43,7 @@ router.get('/api/tours', requireAuth, (req, res, next) => {
     return res.status(500).json(err.message);
   }
 });
+
 router.get('/tours/:id', requireAuth, async (req, res) => {
   try {
     const id = req.params.id;
