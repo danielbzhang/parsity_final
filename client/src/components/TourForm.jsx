@@ -9,15 +9,12 @@ import { addTournament, getTournaments } from '../actions';
 const TourForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  // const [isSubmmited, setIsSubmitted] = useState(false);
   useEffect(() => {
-    // console.log('useEffect called in TourForm');
     dispatch(getTournaments());
   }, []);
 
   const onSubmit = (data) => {
     dispatch(addTournament(data));
-    // setIsSubmitted((current) => !current);
     dispatch(getTournaments());
   };
 

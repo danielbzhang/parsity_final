@@ -17,8 +17,8 @@ router.post('/api/tours', requireAuth, async (req, res) => {
       createdAt: Date.now(),
     });
     await newTour.save();
-    // return res.status(200).json(newTour);
-    return res.status(200);
+    return res.status(200).json(newTour);
+    // return res.status(200);
   } catch (err) {
     return res.status(500).json(err.message);
   }
@@ -95,7 +95,6 @@ router.post('/tours/:id/player', async (req, res, next) => {
     phone,
     email,
   });
-  // await newPlayer.save();
   Tournament.findOneAndUpdate(
     { _id: id },
     { $push: { players: newPlayer } },
