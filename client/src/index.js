@@ -1,11 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { composeWithDevTools } from '@redux-devtools/extension';
-import thunk from 'redux-thunk';
 import store from './store';
-import rootReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // components
 import App from './App';

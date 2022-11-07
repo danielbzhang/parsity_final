@@ -16,7 +16,6 @@ const PaginationTour = ({ toursCount }) => {
 
   useEffect(() => {
     displayPage(currentPage);
-    // console.log('useEffect called in PaginationTour');
   }, [currentPage]);
 
   const displayPagePrev = () => {
@@ -35,29 +34,37 @@ const PaginationTour = ({ toursCount }) => {
     <>
       <nav>
         <h6>current page: {currentPage}</h6>
-        <ul className='pagination justify-content-center'>
-          <li>
-            <button className='page-link' onClick={() => displayPagePrev()}>
-              {'<'}
-            </button>
-          </li>
-          {pageNumbers.map((pgNumber) => (
-            <li key={pgNumber}>
-              <a
-                onClick={() => setCurrentPage(pgNumber)}
-                className='page-link'
-                href='#'
-              >
-                {pgNumber}
-              </a>
+        {pageNumbers.length > 0 && (
+          <ul className='pagination justify-content-center'>
+            <li>
+              <button className='page-link' onClick={() => displayPagePrev()}>
+                {'<'}
+              </button>
             </li>
-          ))}
-          <li>
-            <button className='page-link' onClick={() => displayPageNext()}>
-              {'>'}
-            </button>
-          </li>
-        </ul>
+            {pageNumbers.map((pgNumber) => (
+              <li key={pgNumber}>
+                {/* <a
+                  onClick={() => setCurrentPage(pgNumber)}
+                  className='page-link'
+                  href='#'
+                >
+                  {pgNumber}
+                </a> */}
+                <button
+                  onClick={() => setCurrentPage(pgNumber)}
+                  className='page-link'
+                >
+                  {pgNumber}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button className='page-link' onClick={() => displayPageNext()}>
+                {'>'}
+              </button>
+            </li>
+          </ul>
+        )}
       </nav>
     </>
   );
