@@ -22,7 +22,6 @@ const PlayerList = () => {
   const tourId = useSelector((state) => state.rootReducer.tourOne._id);
 
   const onSubmit = (data) => {
-    // console.log('tourIDDDDDDD:', tourId);
     dispatch(addPlayer(data, tourId));
   };
 

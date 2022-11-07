@@ -32,9 +32,6 @@ const StripeForm = () => {
     theme: 'stripe',
   };
 
-  // Pass the appearance object to the Elements instance
-  // const element = stripe.elements({ clientSecret, appearance });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

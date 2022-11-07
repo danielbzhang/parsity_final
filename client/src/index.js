@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { composeWithDevTools } from '@redux-devtools/extension';
-// import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import store from './store';
 import rootReducer from './reducers';
@@ -18,12 +17,6 @@ import AllPlayers from './components/AllPlayers';
 import ResultTree from './components/ResultTree';
 import NoPageView from './components/NoPageView';
 import Chart from './components/Chart';
-
-// const store = createStore(
-//   rootReducer,
-//   {},
-//   composeWithDevTools(applyMiddleware(thunk))
-// );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
