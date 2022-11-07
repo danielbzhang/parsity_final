@@ -43,13 +43,6 @@ const PaginationTour = ({ toursCount }) => {
             </li>
             {pageNumbers.map((pgNumber) => (
               <li key={pgNumber}>
-                {/* <a
-                  onClick={() => setCurrentPage(pgNumber)}
-                  className='page-link'
-                  href='#'
-                >
-                  {pgNumber}
-                </a> */}
                 <button
                   onClick={() => setCurrentPage(pgNumber)}
                   className='page-link'
